@@ -131,19 +131,19 @@ config.ini 放在客户端主目录。它没有也能跑：没有这个文件、
 
 十二、v1.1.6 的内容（2026-10-10）
 
-  1.【新增】窄地图两边的黑边（083 那种效果）。地图比屏幕窄的时候（211040800/900/1000：地图 892 宽、
-     窗口 1366），地图外面那一圈本来是"没有任何背景层画到"的地方；但有些图的远景贴图比地图本身还宽
-     （1200 > 892），一画就伸出地图，看着像"悬空的素材"。打开后就把地图视口以外那两条竖带涂黑：
+  1.【新增】窄地图两边的黑边（083 那种效果，而且 HUD 完整显示在黑边里）。地图比屏幕窄的时候
+     （211040800/900/1000：地图 892 宽、窗口 1366），地图外面那一圈本来是"没有任何背景层画到"的
+     地方；但有些图的远景贴图比地图本身还宽（1200 > 892），一画就伸出地图，看着像"悬空的素材"。
+     打开后地图外面那两条竖带变黑：
        SideBlackBars = false              ; 默认关；按地图/通配打开
        SideBlackBars.2110408* = true
+       SideBlackBarsFillToMap = true      ; v1.1.7 起只有这一种做法：背景只铺到地图自己的宽度，两边露出
+                                          ; 引擎清屏色 = 纯黑，HUD 画在黑上面；不裁剪世界、不加图层、
+                                          ; 素材一个像素都不动。详见第十三节。
        SideBlackBarsWidth.2110408* = 892  ; 要保留的宽度（= 地图 info/VRRight-VRLeft）；不写就自动用
                                           ; "地图实体范围 + 2 x SideBlackBarsMargin（默认 21）"
-       SideBlackBarsBottom = 0            ; 底部留多少像素不涂（0 = 一路到屏幕底；只有当某块 HUD 正好
-                                          ; 压在这两条竖带里、被涂掉了，才把它调成那块 HUD 的高度）
-       SideBlackBarsShiftUi = false       ; true = 连 UI 一起右移进可见区。实测这套布局下会把状态栏
-                                          ; 一起带走、而且客户端会把移动后的坐标写回存档（窗口位置
-                                          ; 会漂），所以默认 false = UI 一个像素都不动。
-     地图比屏幕宽的图自动不受影响；日志写在客户端目录 backdrop_fill.log 里（前缀 [SideBars]）。
+       SideBlackBarsBottom = 0            ; 只有旧的"涂黑"兜底路线才用（FillToMap = false 时）
+     地图比屏幕宽的图自动不受影响；日志写在客户端目录 backdrop_fill.log 里（前缀 [SideBars] / [WorldClip]）。
   2.【修复】按地图写的布尔键以前根本没生效：<键名>.<地图ID|前缀*> 的值统一用 ParseInt 解析，而文档一直
      写的是 `WideBackFillVertical.240040600 = false` —— strtol("false") 失败，整条被当成"值不可用"丢掉，
      也不会再回退去当普通键处理。现在 ParseInt 失败会再试 true/false、yes/no、on/off，两种写法都能用。
@@ -152,5 +152,38 @@ config.ini 放在客户端主目录。它没有也能跑：没有这个文件、
   4.【新增·默认不启用】WideBackFillType0.<地图> = false —— v053 原版整个跳过 WZ 里 type 0 的背景层
      （我们那 6 个 NOP 才让它们画出来）。个别图远景全是 type 0 又比地图宽时，可以按图把它们关掉
      （代价是那张图的远景会消失）。默认 true，等于什么都不变。
-  5. 默认行为：SideBlackBars = false、SideBlackBarsShiftUi = false、WideBackFillType0 = true；
+  5. 默认行为：SideBlackBars = false、SideBlackBarsClip = false、SideBlackBarsShiftUi = false、WideBackFillType0 = true；
      上面这些不写进 config.ini 就不会有任何变化。
+
+十三、v1.1.7 的内容（2026-10-11）
+
+  1.【定型】窄地图两边黑边只保留一种做法：SideBlackBarsFillToMap = true（默认 true）。原理是把
+     客户端"背景要铺多宽"的答案从设备宽度 1366 换成地图自己的宽度（IWzGr2D::get_width，0x565E8B，
+     全客户端只有 CMapLoadable::MakeBack 一个调用者用），背景就只铺到地图边上；两侧露出的是引擎
+     清屏色（纯黑），而清屏发生在所有图层之前 —— 所以状态栏 / 小地图 / 聊天框 / 装备栏 / 技能栏这些
+     UI 层天然画在黑边上面，世界素材一个像素都不动、不裁剪、不重铺。
+     实测 211040900：黑边精确 237 px（x 0..236 与 1129..1365 全黑），地图内部 237..1129 完全不变。
+  2.【删除】上一版试过的三类开关，都因为实测走不通而移除（源码里也已删除，写进 config.ini 会被忽略）：
+       SideBlackBarsClip / ClipBClip / ClipVMargin / ClipMargin / ClipBias / ClipVariant / ClipLegacy
+         —— 把 WrapClip 的矩形收窄在这个引擎里不是"裁剪"，而是"在矩形内重复平铺"：628 px 的贴图
+            放进 892 px 的带子会看到一份半，地图里出现重复景物。
+       SideBlackBarsLayerZ / LayerShift / LayerShiftY
+         —— "自己建两条黑色图层"这条路：实测本插件建的图层根本不会被引擎合成。七条探针（z 从
+            -100000 到 100000，其中一条 20000x20000 的矩形无论图层原点在哪都该盖住全屏）没有改变
+            任何一个像素，而 CreateLayer / InsertCanvas / put_color / WrapClip 全部返回 S_OK。客户端
+            自己的流程在 CreateLayer 之后还会调 Animate（vtable 0xFC），那一步的参数含义没能确定，
+            所以这条路线不做。
+       SideBlackBarsShiftUi —— 把 UI 原点挪进黑边：实测会连状态栏一起搬走，而且客户端会把移动后的
+            窗口坐标写回自己的配置表（窗口位置会漂）。
+       SideBlackBarsFillTarget / FillShift / FillBand —— FILL 路线的标定旋钮，定型后不再需要。
+  3.【已知限制】如果地图自己的素材本来就伸到地图外面（WZ 里 type 0 的远景层、或 obj 层里比地图还宽
+     的贴图），FILL 路线管不到它 —— 它不属于"背景铺料宽度"。211041000 就是这种情况（13 层 600~1200 px
+     的 type 0 远景对 892 px 的地图），先用 WideBackFillBackmost.2110410* = 0 保持原样。
+  4. 默认行为：SideBlackBars = false（按地图开）、SideBlackBarsFillToMap = true；
+     211040800 / 211040900 已开（SideBlackBars.2110408*/…9* = true、宽度 892），并配合
+     WideBackFillBackmost.2110408*/…9* = 1（这两张图最靠后的第 2 层是实体景物，多铺一层就满屏重复）。
+  5.【修复】按地图配的通配前缀现在同时认"标准十进制"和"9 位补零"两种写法（WZ 地图文件名就是 9 位
+     补零的）。以前只用标准十进制比较，所以 `CameraBottomSlack.0010*` 这种照文件名写的键永远匹配不上
+     （ID 1000000 的十进制是 "1000000"，不以 "0010" 开头），进图时日志末尾会显示 (defaults …)。
+     现在两种写法都试、取最长的命中：`0010*` 命中 ID 1000000..1099999，且绝不会命中 9 位的 100000000；
+     命中补零写法时日志会写出 (id 001000000)。旧的 `10*`（十进制前缀）行为完全不变。
