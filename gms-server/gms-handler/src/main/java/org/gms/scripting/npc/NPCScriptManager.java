@@ -25,6 +25,8 @@ import jakarta.annotation.PostConstruct;
 import org.gms.client.Character;
 import org.gms.client.Client;
 import org.gms.constants.game.NextLevelType;
+import org.gms.constants.npc.NpcFunc;
+import org.gms.dao.entity.NpcFuncListDO;
 import org.gms.model.dto.NpcMenuDTO;
 import org.gms.model.pojo.NextLevelContext;
 import org.gms.net.server.world.PartyCharacter;
@@ -216,22 +218,34 @@ public class NPCScriptManager extends AbstractScriptManager {
      * @return
      */
     private String getOriginNpcPath(int npc) {
+        // 1. 优先检查是否是美容 NPC (BEAUTY)
+        NpcFuncListDO beautyFunc = scriptServiceContext.getNpcFuncService().selectByNpcIdAndType(npc, NpcFunc.BEAUTY.name());
+        if (beautyFunc != null) {
+            return "template/npcBeauty.js";
+        }
+
+        // 2. 检查是否是制作 NPC (CRAFT)
+        NpcFuncListDO craftFunc = scriptServiceContext.getNpcFuncService().selectByNpcIdAndType(npc, NpcFunc.CRAFT.name());
+        if (craftFunc != null) {
+            return "template/npcCraft.js";
+        }
+
+        // 3. 兼容你原本的 CraftService 动态缓存兜底（如果数据库里没配，但代码里动态支持制作菜单）
         Boolean b = craftNpcCache.get(npc);
         if (b == null) {
-            // 查找是否有目录，是否是craftNpc
             List<NpcMenuDTO> npcMenuList = scriptServiceContext.getCraftService().getNpcMenuList(npc);
             if (npcMenuList == null || npcMenuList.isEmpty()) {
                 craftNpcCache.put(npc, Boolean.FALSE);
-                return  "npc/" + npc + ".js";
+                return "npc/" + npc + ".js";
             } else {
                 craftNpcCache.put(npc, Boolean.TRUE);
-                return  "template/npcCraft.js";
+                return "template/npcCraft.js";
             }
         } else {
             if (b) {
-                return  "template/npcCraft.js";
+                return "template/npcCraft.js";
             } else {
-                return  "npc/" + npc + ".js";
+                return "npc/" + npc + ".js";
             }
         }
     }

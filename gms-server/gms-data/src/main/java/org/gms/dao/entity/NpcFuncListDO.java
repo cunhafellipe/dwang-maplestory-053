@@ -21,8 +21,8 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table("npc_craft_list")
-public class NpcCraftListDO implements Serializable {
+@Table("npc_function_list")
+public class NpcFuncListDO implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
@@ -30,5 +30,12 @@ public class NpcCraftListDO implements Serializable {
     @Id(keyType = KeyType.Auto)
     private Integer id;
     private Integer npcId;
+
+
+    /**
+     * 业务功能类型: CRAFT(制作), BEAUTY(美容) 等
+     */
+    private String funcType;
+
 
 }

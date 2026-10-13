@@ -1,13 +1,13 @@
 package org.gms.scripting;
 
+import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.gms.net.server.services.task.channel.EventService;
 import org.gms.property.ServiceProperty;
 import org.gms.server.achievement.AchievementService;
-import org.gms.service.EventConfigDataService;
-import org.gms.service.GachaponService;
-import org.gms.service.NpcCraftService;
+import org.gms.service.*;
 import org.springframework.stereotype.Component;
 
 /**
@@ -20,58 +20,32 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Getter
+@RequiredArgsConstructor // 自动生成包含所有 final 字段的构造函数
 public class ScriptServiceContext {
 
-    // 1. 静态持有自身实例，供非 Spring Bean 直接获取
     private static ScriptServiceContext instance;
 
+    // 新增 Bean 只需要在这里加一行 final 即可，无需改动构造函数！
     private final NpcCraftService craftService;
     private final GachaponService gachaponService;
     private final AchievementService achievementService;
     private final ServiceProperty serviceProperty;
-    @Getter
     private final EventConfigDataService eventConfigDataService;
+    private final NpcBeautyService npcBeautyService;
+    private final NpcFuncService npcFuncService;
 
-    // Spring 自动将依赖注入构造函数
-    public ScriptServiceContext(NpcCraftService craftService,
-                                GachaponService gachaponService,
-                                AchievementService achievementService,
-                                ServiceProperty serviceProperty,
-                                EventConfigDataService eventConfigDataService
-    ) {
-        this.craftService = craftService;
-        this.gachaponService = gachaponService;
-        this.achievementService = achievementService;
-        this.serviceProperty = serviceProperty;
-        this.eventConfigDataService = eventConfigDataService;
 
-        // 赋值给静态变量
+
+    @PostConstruct
+    public void init() {
         ScriptServiceContext.instance = this;
     }
 
-    // -------------------------------------------------------------------------
-    // 静态 Getter：提供给非 Spring Bean（如父类 AbstractScriptManager、EventScriptManager）
-    // -------------------------------------------------------------------------
     public static ScriptServiceContext getInstance() {
         return instance;
     }
 
     public static ServiceProperty getStaticServiceProperty() {
         return instance != null ? instance.serviceProperty : null;
-    }
-
-    // -------------------------------------------------------------------------
-    // 实例 Getter：提供给通过 Spring 注入该 Context 的单例组件（如 NPCScriptManager）
-    // -------------------------------------------------------------------------
-    public NpcCraftService getCraftService() {
-        return craftService;
-    }
-
-    public GachaponService getGachaponService() {
-        return gachaponService;
-    }
-
-    public ServiceProperty getServiceProperty() {
-        return serviceProperty;
     }
 }

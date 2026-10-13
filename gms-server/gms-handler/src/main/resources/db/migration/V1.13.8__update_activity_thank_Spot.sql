@@ -10,5 +10,4 @@ SET @current_activity_monster_id = LAST_INSERT_ID();
 delete from `activity_monster_mob` where `mob_id` = 9400568;
 INSERT INTO `activity_monster_mob` (`config_id`, `mob_id`, `spawn_count`, `sort_order`) VALUES (@current_activity_monster_id, 9400568, 10, 0);
 
--- 召唤妖怪禅师 quest: 3841
--- INSERT INTO `plife` ( `world`, `map`, `life`, `type`, `cy`, `f`, `fh`, `rx0`, `rx1`, `x`, `y`, `hide`, `mobtime`, `team`) VALUES (0, 250010504, 2091004, 'n', 152, 0, 24, 661, 561, 611, 152, 0, -1, 0);
+-- 后续有再新增了

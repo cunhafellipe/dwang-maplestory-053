@@ -39,6 +39,7 @@ import org.gms.constants.id.MapId;
 import org.gms.constants.inventory.ItemConstants;
 import org.gms.constants.string.LanguageConstants;
 import org.gms.dao.entity.GachaponRewardDO;
+import org.gms.model.dto.BeautyCategoryDTO;
 import org.gms.model.dto.NpcCraftCategoryDTO;
 import org.gms.model.dto.NpcMenuDTO;
 import org.gms.dwutil.CharacterUtils;
@@ -65,6 +66,8 @@ import org.gms.server.achievement.egg.imp.BeautyEggChecker;
 import org.gms.server.achievement.egg.imp.MakerSignedEggChecker;
 import org.gms.server.cashshop.CashShop;
 import org.gms.server.gachapon.Gachapon;
+import org.gms.service.NpcBeautyService;
+import org.gms.service.NpcCraftService;
 import org.gms.util.I18nUtil;
 import org.gms.util.packets.WeddingPackets;
 import org.slf4j.Logger;
@@ -1859,4 +1862,40 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
         player.yellowMessage(I18nUtil.getMessage("MaxSkillCommand.message2"));
     }
+
+
+    /**
+     *
+     *
+     *  npc的整容 染发 皮肤管理
+     *
+     */
+
+    // 1. 获取该 NPC 对应的所有美发/整容分类菜单列表
+    public List<BeautyCategoryDTO> getNpcBeautyMenuList(int npcId,  int playerGender) {
+        NpcBeautyService npcBeautyService = context.getNpcBeautyService();
+        return npcBeautyService.getNpcBeautyMenuList(npcId, playerGender);
+    }
+
+    // 2. 获取选中分类的具体数据与计算后的外观 ID 列表
+    public BeautyCategoryDTO getBeautyCategoryData(int npcId, int menuIndex, int gender) {
+        Character player = getPlayer();
+        int currentHair = player.getHair();
+        int currentFace = player.getFace();
+        NpcBeautyService npcBeautyService = context.getNpcBeautyService();
+        return npcBeautyService.getBeautyCategoryData(npcId, menuIndex, gender, currentHair, currentFace);
+    }
+
+    // 3. 获取 NPC 台词 Map（复用你之前的 getNpcDialogs 逻辑）
+    // 已存在
+    /**
+     * 获取NPC的对话列表
+     *
+     * @param npcId
+     * @return
+     */
+    public Map<String, String> getNpcBeautyDialogs(int npcId) {
+        return context.getNpcBeautyService().getBeautyDialogs(npcId);
+    }
+
 }

@@ -1,6 +1,7 @@
 package org.gms.service;
 
 import com.mybatisflex.core.query.QueryWrapper;
+import org.gms.constants.npc.NpcFunc;
 import org.gms.dao.entity.*;
 import org.gms.dao.mapper.*;
 import org.gms.model.dto.NpcCraftCategoryDTO;
@@ -21,6 +22,7 @@ import static org.gms.dao.entity.table.NpcCraftCatTableDef.NPC_CRAFT_CAT;
 import static org.gms.dao.entity.table.NpcCraftItemTableDef.NPC_CRAFT_ITEM;
 import static org.gms.dao.entity.table.NpcCraftMatTableDef.NPC_CRAFT_MAT;
 import static org.gms.dao.entity.table.NpcDialogTableDef.NPC_DIALOG;
+import static org.gms.dao.entity.table.NpcFuncListDOTableDef.NPC_FUNC_LIST_D_O;
 
 /**
  * NPC 锻造/合成服务实现类 (基于 MyBatis-Flex)
@@ -42,13 +44,13 @@ public class NpcCraftServiceImpl implements NpcCraftService {
     private NpcCraftMatMapper matMapper;
 
     @Autowired
-    private NpcCraftListMapper craftListMapper;
+    private NpcFuncService npcFuncService;
 
 
     public List<CraftSearchRtnDTO> getCraftList() {
-        List<NpcCraftListDO> queryAsList = craftListMapper.selectAll();
+        List<NpcFuncListDO> queryAsList = npcFuncService.selectByType(NpcFunc.CRAFT.name());
         List<CraftSearchRtnDTO> matchedShopsDOList = new ArrayList<>();
-        for (NpcCraftListDO row : queryAsList) {
+        for (NpcFuncListDO row : queryAsList) {
             Integer npcId = row.getNpcId();
             String npcName = StringInfoProvider.getNPCName(npcId);
             if (RequireUtil.isEmpty(npcName)) {
