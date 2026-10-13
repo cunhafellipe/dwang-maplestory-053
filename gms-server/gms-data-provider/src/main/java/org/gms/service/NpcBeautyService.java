@@ -94,8 +94,9 @@ public class NpcBeautyService {
         if (targetCat == null) return null;
 
         // 查出对应分类和性别下的资源池明细
+        QueryWrapper and = QueryWrapper.create().where(NPC_BEAUTY_CAT_D_O.MENU_INDEX.eq(menuIndex)).and(NPC_BEAUTY_CAT_D_O.CATEGORY_NAME.eq(targetCat.getCategoryName()));
         NpcBeautyCatDO catEntity = catMapper.selectListByQuery(
-                QueryWrapper.create().where(NPC_BEAUTY_CAT_D_O.MENU_INDEX.eq(menuIndex))
+                and
         ).get(0);
 
         List<NpcBeautyPoolDO> pools = poolMapper.selectListByQuery(

@@ -61,12 +61,14 @@ function action(mode, type, selection) {
         }
 
         // 如果只有一个选项（如皮肤护理），直接模拟选择第 0 项
-        if (menuList.size() == 1) {
-            selectedCategoryIndex = menuList.get(0).getMenuIndex();
-            status = 1; // 直接跳到处理逻辑
-            action(1, 0, selectedCategoryIndex);
-            return;
-        }
+//        if (menuList.size() == 1) {
+//            selectedCategoryIndex = menuList.get(0).getMenuIndex();
+//            selectedCategory = cm.getBeautyCategoryData(cm.getNpc(), selectedCategoryIndex, playerGender);
+//
+//            status = 1; // 直接跳到处理逻辑
+//            action(1, 0, selectedCategoryIndex);
+//            return;
+//        }
 
         // 多个选项（如娜塔莉亚的理发与染发），弹出菜单
         var selStr = getDialog("beauty_start", "我是这家店的负责人。请选择你想要进行的项目：#b");
