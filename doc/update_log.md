@@ -3,6 +3,10 @@
 2. 修复光明节缺少进入地图NPC入口
 3. 新增NpcBeauty的相关管理实现，当前数据只管理射手村 ``org.gms.service.NpcBeautyService``
 4. 优化NpcCraft的实现。适配更多种类型NPC的。
+5. 新增 NpcBeauty 管理后台实现：`org.gms.controller.NpcBeautyController` + `org.gms.service.NpcBeautyAdminService`，支持 npc_beauty_mapping / npc_beauty_pool / npc_beauty_pool_item / npc_dialog 的增删改查（npc_beauty_cat 只读展示），并新增读取 Character.wz 发型/脸型基础样式的接口 `GET /api/npc-beauty/v1/wzStyles`；前端页面 `gms-ui/src/views/game/npcBeauty`。
+6. NpcBeauty 调整：npc_beauty_pool_item 返回值新增样式中文名 (styleName)，由 StringInfoProvider 启动时从 String.wz/Eqp.img/Eqp/{Hair|Face} 加载并缓存 (initBeautyStyleNames / getHairName / getFaceName / getBeautyStyleName)；npc_beauty_pool 与 npc_beauty_pool_item 的增删改统一挪到 NPC 列表页的「美容资源池管理」弹窗 (新增 poolManager.vue + GET /api/npc-beauty/v1/poolItems/{poolId})，详情页只保留展示与绑定/解绑。
+7. 新增 Flyway 脚本 `V1.14.2__update_beauty_bms_data.sql`：按 `bms/Script/{face,hair,skin}.s` 生成 35 个美容 NPC 的数据（84 个资源池、655 条样式明细、88 条绑定、87 条中文台词、35 条 npc_function_list）；`npc_beauty_cat` 把 `menu_index` 全表唯一化（cat1~9 → 0~8）并新增 id=10「剪发 (美发会员优惠券)」（对应剧本 `askMembershopAvatar(542000x)` 分支，menu_index=9），这样武陵诺马(2090104) 的「整容普通 + 美瞳普通」等任意分类组合都能共存（npcBeauty.js 用 `menu.getMenuIndex()` 动态拼 `#L<n>#`，不受影响）；皮肤 5 个 NPC 共用已有的 `henesys_skin_pool`(id=11) 并把明细补成 0/1/2/3/4；台词从 BMS 葡语/英语剧本翻译为中文，样式明细只写基础样式ID并逐个校验存在于本客户端 Character.wz。
+8. NpcBeauty 后台增强：①「美容资源池管理」的资源池列表改为分页（10 条/页，池内样式明细不分页），点「样式明细」自动把明细卡片滚进可视区；②新增「样式管理」按钮与 `styleManager.vue`，按 男发型/女发型/男脸/女脸 四个 tab 列出 053 wz 全部基础样式，显示每个样式被哪些 `npc_beauty_pool` 引用、引用次数（0 = 没被任何池使用），支持勾选多个样式后批量加入多个资源池；对应新增接口 `GET /api/npc-beauty/v1/styleOverview` 与 `POST /api/npc-beauty/v1/addStylesToPools`（已存在的样式自动跳过，新样式追加到池尾）；资源池列表支持按 HAIR/FACE/SKIN 与池名/分类名筛选，样式管理的「加入池子」弹窗默认把已加入的池勾上并打绿标「已加入」。
 
 
 ## 20261009

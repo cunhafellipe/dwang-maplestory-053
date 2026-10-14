@@ -63,6 +63,16 @@ const GAME: AppRouteRecordRaw = {
       },
     },
     {
+      path: 'npcBeauty',
+      name: 'NpcBeauty',
+      component: () => import('@/views/game/npcBeauty/index.vue'),
+      meta: {
+        locale: 'menu.game.npcBeauty', // 国际化 Key (也可直接写 'NPC美容')
+        requiresAuth: true,
+        roles: ['admin'],
+      },
+    },
+    {
       path: 'drop',
       name: 'drop',
       component: () => import('@/views/game/drop/index.vue'),

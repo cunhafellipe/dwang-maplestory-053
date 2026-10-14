@@ -15,6 +15,17 @@ export function getIconUrl(
   return `https://maplestory.io/api/${location}/${version}/${category}/${id}/icon`;
 }
 
+/**
+ * img 标签 @error 回调：图标不存在时隐藏，避免出现碎裂占位图
+ * 用法: <img :src="getIconUrl('item', id)" @error="hideBrokenIcon" />
+ */
+export function hideBrokenIcon(e: Event): void {
+  const target = e.target as HTMLImageElement;
+  if (target) {
+    target.style.visibility = 'hidden';
+  }
+}
+
 export function nothing() {
   return '占位用';
 }

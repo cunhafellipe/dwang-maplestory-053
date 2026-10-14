@@ -58,6 +58,20 @@ public class StringInfoProvider {
     @Getter
     private static Map<String, String> bgmsNameAndMapName = new HashMap<>();
 
+    /**
+     * 美容(美发/整容)相关名字缓存：String.wz/Eqp.img/Eqp/{Hair|Face}/{styleId}/name
+     * 只加载这两个分类, 其它装备分类不加载
+     */
+    @Getter
+    private static Map<Integer, String> hairNames = new HashMap<>();
+    @Getter
+    private static Map<Integer, String> faceNames = new HashMap<>();
+
+    /**
+     * 发型/脸型名字是否已加载 (取名字时若未加载会自动补一次)
+     */
+    private static volatile boolean beautyStyleNameLoaded = false;
+
 
     private static final Map<Integer, String> questNames = new HashMap<>();
 
@@ -67,7 +81,76 @@ public class StringInfoProvider {
     private static final Map<Integer, List<MapStrInfo>> MOB_EXIST_MAP = new LinkedHashMap<>();
 
     static {
+        // 美容(发型/脸型)名字数据量很小, 服务启动时一次性加载
+        initBeautyStyleNames();
         initMapStr();
+    }
+
+    /**
+     * 加载美容相关的发型 / 脸型中文名 (String.wz/Eqp.img/Eqp/{Hair|Face}/{id}/name)
+     * 服务启动时调用; 取名字时若发现未加载也会自动补一次
+     */
+    public static void initBeautyStyleNames() {
+        try {
+            Data hairData = eqpStringData == null ? null : eqpStringData.getChildByPath("Hair");
+            Data faceData = eqpStringData == null ? null : eqpStringData.getChildByPath("Face");
+            // 先构建到局部变量再整体替换, 避免并发读到半成品
+            Map<Integer, String> hair = hairData == null ? new HashMap<>() : buildParamName(hairData);
+            Map<Integer, String> face = faceData == null ? new HashMap<>() : buildParamName(faceData);
+            hairNames = hair;
+            faceNames = face;
+            beautyStyleNameLoaded = true;
+        } catch (Exception e) {
+            System.err.println("加载发型/脸型名字失败：" + e.getMessage());
+        }
+    }
+
+    private static void ensureBeautyStyleNames() {
+        if (!beautyStyleNameLoaded) {
+            initBeautyStyleNames();
+        }
+    }
+
+    /**
+     * 取发型中文名, 取不到返回 null
+     */
+    public static String getHairName(int styleId) {
+        ensureBeautyStyleNames();
+        return hairNames.get(styleId);
+    }
+
+    /**
+     * 取脸型中文名, 取不到返回 null
+     */
+    public static String getFaceName(int styleId) {
+        ensureBeautyStyleNames();
+        return faceNames.get(styleId);
+    }
+
+    /**
+     * 按美容类型取发型/脸型中文名
+     *
+     * @param beautyType HAIR / FACE, 为空时按官方 ID 区间兜底推断
+     */
+    public static String getBeautyStyleName(String beautyType, Integer styleId) {
+        if (styleId == null) {
+            return null;
+        }
+        ensureBeautyStyleNames();
+        if ("FACE".equalsIgnoreCase(beautyType)) {
+            return faceNames.get(styleId);
+        }
+        if ("HAIR".equalsIgnoreCase(beautyType)) {
+            return hairNames.get(styleId);
+        }
+        // 类型未知时按 ID 区间推断
+        if (styleId >= 20000 && styleId <= 21999) {
+            return faceNames.get(styleId);
+        }
+        if (styleId >= 30000 && styleId <= 31999) {
+            return hairNames.get(styleId);
+        }
+        return null;
     }
 
     /**
