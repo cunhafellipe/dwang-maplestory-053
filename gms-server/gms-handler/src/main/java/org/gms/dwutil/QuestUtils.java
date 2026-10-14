@@ -2,6 +2,7 @@ package org.gms.dwutil;
 
 import lombok.Getter;
 import org.gms.client.Character;
+import org.gms.client.ServerMsgType;
 import org.gms.constants.id.QuestId;
 import org.gms.server.achievement.AchievementCategory;
 import org.gms.server.achievement.AchievementService;
@@ -106,7 +107,12 @@ public class QuestUtils {
 
         for (AbstractQuestRequirementData r : completeReqs.values()) {
             if (!QuestRequirementEvaluator.check(r, chr, npcid)) {
-                log.debug("无法完成任务, name: {}, questId: {}, 不满足: {}", quest.getName(), quest.getId(), r.getType());
+                String logFormat = "无法完成任务: [%s], questId: [%d], 不满足: %s, 请联系Dwang2019。";
+                String questInfo = String.format(logFormat, quest.getName(), quest.getId(), r.getType().toString());
+                if (GameConfig.getServerBoolean("use_debug")) {
+                    log.debug(questInfo);
+                    chr.dropMessage(ServerMsgType.Pink_Text.getType(), questInfo);
+                }
                 return false;
             }
         }
