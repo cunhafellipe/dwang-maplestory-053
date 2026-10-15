@@ -98,7 +98,14 @@ public class QuestUtils {
         return canQuestByInfoProgress(chr, quest);
     }
 
-    public static boolean canComplete(Character chr, Integer npcid, QuestV2 quest) {
+    /**
+     * 客户端交任务使用，可以打日志
+     * @param chr
+     * @param npcid
+     * @param quest
+     * @return
+     */
+    public static boolean canCompleteAction(Character chr, Integer npcid, QuestV2 quest) {
         QuestStatus mqs = chr.getQuest(quest);
         if (!mqs.getStatus().equals(QuestStatus.Status.STARTED)) {
             return false;
@@ -113,6 +120,30 @@ public class QuestUtils {
                     log.debug(questInfo);
                     chr.dropMessage(ServerMsgType.Pink_Text.getType(), questInfo);
                 }
+                return false;
+            }
+        }
+
+        return canQuestByInfoProgress(chr, quest);
+
+    }
+
+    /**
+     * 内部判断使用
+     * @param chr
+     * @param npcid
+     * @param quest
+     * @return
+     */
+    public static boolean canComplete(Character chr, Integer npcid, QuestV2 quest) {
+        QuestStatus mqs = chr.getQuest(quest);
+        if (!mqs.getStatus().equals(QuestStatus.Status.STARTED)) {
+            return false;
+        }
+        Map<QuestRequirementType, AbstractQuestRequirementData> completeReqs = quest.getCompleteReqs();
+
+        for (AbstractQuestRequirementData r : completeReqs.values()) {
+            if (!QuestRequirementEvaluator.check(r, chr, npcid)) {
                 return false;
             }
         }

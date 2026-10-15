@@ -107,7 +107,7 @@ public final class QuestActionHandler extends AbstractPacketHandler {
                 if (!isNpcNearby(p, player, quest, npc)) {
                     return;
                 }
-                if (QuestUtils.canComplete(player, npc,quest)) {
+                if (QuestUtils.canCompleteAction(player, npc,quest)) {
                     boolean success = QuestScriptManager.getInstance().checkFunctionExists(c, questid, npc, "end");
                     boolean hasScriptRequirement = quest.hasScriptRequirement(true);
                     if (hasScriptRequirement && success) {
@@ -141,7 +141,7 @@ public final class QuestActionHandler extends AbstractPacketHandler {
                 if (!isNpcNearby(p, player, quest, npc)) {
                     return;
                 }
-                if (QuestUtils.canComplete(player, npc, quest)) {
+                if (QuestUtils.canCompleteAction(player, npc, quest)) {
                     QuestScriptManager.getInstance().end(c, questid, npc);
                 }
                 break;
