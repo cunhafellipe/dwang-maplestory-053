@@ -1,6 +1,6 @@
 ﻿# client-dist.sha256 —— 由 tools\make-manifest.ps1 生成，不要手改
 # 格式： <sha256>  <相对 client-dist 的路径>（正斜杠）
-97f6deefe08f78e1029bcbbadd3d16d4773d695dcadd3de2fc2ce5731fddf259  plugin/config.ini
+66c51a0713df9bb2d2ebf0accc5b1acdc5abd0e7dfc58d8d3202342a0d10e9f8  plugin/config.ini
 6cb2f42023e78108d3fc9f5fb814b54277fffe119a96c70bbc15c2b73553608a  plugin/garbled053_zh.txt
 85d41a988d5211764d03a170686fce8d4e58d73fd68cc5ae81955507c0dc20ec  plugin/Hook.dll
 ffa4c6aeaead9c4806cb5f0c8cae46484333cf8d2fe79e8894673dd44d6d9a3b  plugin/Launcher.exe
@@ -30,7 +30,7 @@ b528a832a0a5e41345b95021b085e133b3d365a521c240e9fb27f7d45c2070d3  data/Data/Char
 cba6f86583ed312e29283b7dae249958fd8090d48172b518faf511f7b2412edd  data/Data/Etc/CashPackage.img
 ff6db522e524cb98b9a0d6a1199367086214a2f02019c8b9c6c36c684114fa09  data/Data/Etc/Category.img
 242039ed7887d6e47f3ca41dcca6af234c1cf46439f2da627833f38cebb187db  data/Data/Etc/ChatBlockReason.img
-ff776fe1530cc1651efc22f8456e5e8be3ca587f63605fb350e44ac7e08587f6  data/Data/Etc/Commodity.img
+f47480a768e44c677de22d0d0adc2392349d4646facd22cccd6839772035177d  data/Data/Etc/Commodity.img
 6c8921e126cabd23f09e236967fa1f84627f3a7bafa08177d57866f7deb5ddb4  data/Data/Etc/Curse.img
 a587e90055ee1d5798b56500c9a620cf659b80bd34af85c74b8b9fa83492d0d6  data/Data/Etc/EmotionEffect.img
 cbbbf72e780b4e4efce0c4acf524535985309632cc710a1d3c4cc623a0851e19  data/Data/Etc/ForbiddenName.img
@@ -57,7 +57,7 @@ ebb72fc9264897046d1e9c248508ee8d757e0e52cd988077dfdcd4313b5577e1  data/Data/Item
 2ecfea1fe87fc1e7b90e07b83ecaa0a2abf49d00fa292ba9b12a1c2242f4fe63  data/Data/Item/Cash/0512.img
 42fc3ebcbeed91b5a2d5548d4532a1db3a9929175b25a7ea372fb684d70a7894  data/Data/Item/Cash/0513.img
 b462c10727dc32d0257a21773bd1d8ac7e2552eea1380d14518ba34c1d86430b  data/Data/Item/Cash/0514.img
-79e963c2fdc8139c285e906d0273649c7e0d0365176a86d1eb86ccc726ca2fcb  data/Data/Item/Cash/0515.img
+8cfe7830f50f7b7f00b01a6c809a071c77e158ad84cea4b899be2723ad47cd33  data/Data/Item/Cash/0515.img
 cf4cc45e44b2e5b9d25abcee3cff7149426b0fd49aaebe15488468179a8e26b3  data/Data/Item/Cash/0516.img
 6d5b02455e2d254e90fe0f0172610d66f5d08c4e7b8dd89f3861f17762c43763  data/Data/Item/Cash/0517.img
 6cd3ed33f359e2be209f472f0f9e4f306ec7c5e727e182c582a307dc554c2bc6  data/Data/Item/Cash/0518.img
