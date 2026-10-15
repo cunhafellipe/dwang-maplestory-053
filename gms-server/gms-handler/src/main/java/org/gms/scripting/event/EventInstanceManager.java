@@ -1147,6 +1147,8 @@ public class EventInstanceManager {
             rewardExp = collectionExp.get(eventLevel);
         } finally {
             readLock.unlock();
+            // 获取奖励再记录
+            achievementService.recordAchievement(player.getId(), AchievementCategory.PARTY_QUEST, getEm().getName(), 1);
         }
 
         if (rewardExp == null) {
@@ -1172,8 +1174,6 @@ public class EventInstanceManager {
             player.gainExp(rewardExp);
         }
 
-        // 获取奖励再记录
-        achievementService.recordAchievement(player.getId(), AchievementCategory.PARTY_QUEST, getEm().getName(), 1);
         return true;
     }
 
