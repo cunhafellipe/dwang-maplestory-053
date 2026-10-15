@@ -1,3 +1,7 @@
+## 20261015
+1. 定位并修复「客户端商城顶部分类标签与实际商品错位一格」（点上衣出裤裙、点裤裙出鞋子）：`v53-client\Data\Etc\Category.img` 是 2026-09-21 用 OrzRepacker 从 `汉化\cn-v1-xml\Etc.wz\Category.img.xml`（汉化时把 Name 相对 `Category`/`CategorySub` 整体错位了一格的源文件）整包导出的；053 客户端是「用同一条节点的 `Name` 当标签文字、用该节点的 `Category`+`CategorySub` 拼 SN 前缀选商品」，所以名字错位 = 标签与内容错位（2/4 挂着上衣的名字却装的是 sub=5 的裤裙）。已修 `client-dist\data\Data\Etc\Category.img`（Name 与 Sub 对齐，并把 2/4 由「热销」改为「上衣」）和 `gms-server/gms-handler/wz-zh-CN/Etc.wz/Category.img.xml`（同步 2/4=上衣），并重算 `client-dist.sha256`；客户端要跑 `client-dist\tools\更新客户端.bat` 才会替换 9-21 的旧文件。
+2. 新增文档 `doc/商城道具上架说明.md`：
+
 ## 20261013
 1. 修复地图废都北方工地 102040000 缺少进入 102040001入口
 2. 修复光明节缺少进入地图NPC入口
