@@ -19826,7 +19826,7 @@
     <imgdir name="0">
       <int name="npc" value="9201003"/>
       <int name="lvmin" value="1"/>
-      <int name="interval" value="1440"/>
+<!--      <int name="interval" value="1440"/>-->
     </imgdir>
   </imgdir>
   <imgdir name="8870">
