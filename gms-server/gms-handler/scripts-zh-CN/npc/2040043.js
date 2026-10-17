@@ -125,7 +125,11 @@ function action(mode, type, selection) {
                             }
                         }
                     }
-                    if (playersOnCombo == 5 || (GameConfig.getServerBoolean("use_enable_stage_skip") && eim.getPlayerCount() == 1)) {
+                    if(GameConfig.getServerBoolean("use_enable_stage_skip") && eim.getPlayerCount() == 1) {
+                        eim.setProperty("statusStg" + stage, 1);
+                        clearStage(stage, eim, curMap);
+                        cm.dispose();
+                    } else if (playersOnCombo == 5) {
                         var comboStr = eim.getProperty("stage" + stage + "combo");
                         if (comboStr == null) {
                             comboStr = generateCombo();
