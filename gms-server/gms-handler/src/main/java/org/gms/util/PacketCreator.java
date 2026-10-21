@@ -4098,7 +4098,7 @@ public class PacketCreator {
     }
 
     public static Packet getStorage(int npcId, byte slots, Collection<Item> items, int meso) {
-        final OutPacket mplew = OutPacket.create(SendPacketOpcode.OPEN_STORAGE);
+        final OutPacket mplew = OutPacket.create(SendPacketOpcode.STORAGE);
         mplew.write(0x13);
         mplew.writeInt(npcId);
         mplew.write(slots);

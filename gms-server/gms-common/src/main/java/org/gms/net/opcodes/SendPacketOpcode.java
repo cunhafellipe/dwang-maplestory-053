@@ -23,161 +23,600 @@ package org.gms.net.opcodes;
 
 public enum SendPacketOpcode implements Opcode {
 
-    // LOGIN
+    // ==================== LOGIN ====================
+
     /**
      * 登录状态
      */
     LOGIN_STATUS(0x00), // check
 
-    // CHANNEL
-    //  ↓
+    // 0x01 - 0x02 未使用
+
+    // ==================== CHANNEL ====================
+
+    /**
+     * 更改频道
+     */
     CHANGE_CHANNEL(0x03), // 更改频道
 
-    // GENERAL
-    // check ↓
+    // 0x04 未使用
+
+    // ==================== GENERAL ====================
+
+    /**
+     * 服务器列表
+     */
+    SERVERLIST(0x05), // check
+
+    /**
+     * 角色名检查回应
+     */
+    CHAR_NAME_RESPONSE(0x06), // check
+
+    /**
+     * 建立新角色回应
+     */
+    ADD_NEW_CHAR_ENTRY(0x07), // check
+
+    /**
+     * 删除角色回应
+     */
+    DELETE_CHAR_RESPONSE(0x08), // check
+
+    /**
+     * 心跳包
+     */
     PING(0x09), // 心跳包
 
-    // check ↓
-    SERVERLIST(0x05), // 服务器列表
-    // check ↓
-    CHAR_NAME_RESPONSE(0x06), // 角色名检查回应
-    // check ↓
-    ADD_NEW_CHAR_ENTRY(0x07), // 建立新角色回应
-    // check ↓
-    DELETE_CHAR_RESPONSE(0x08), // 删除角色回应
+    // 0x0A - 0x0B 未使用
 
-    // check ↓
-    SERVER_IP(0x0C), // 服务器IP(进入游戏世界)
+    /**
+     * 服务器IP（进入游戏世界）
+     */
+    SERVER_IP(0x0C), // check
 
-    PIN_OPERATION(0x0D), // PIN码操作
-    SERVERSTATUS(0x12), // 服务器状态
-    // check ↓
-    CHARLIST(0x13), // 角色列表
-    // check ↓
-    RELOG_RESPONSE(0x15), // 重新登录回应
+    /**
+     * PIN码操作
+     */
+    PIN_OPERATION(0x0D),
 
-    MAP_TRANSFER_RESULT(0x1c), // 地图转移结果
+    // 0x0E - 0x11 未使用
 
-    /*CWvsContext::OnPacket*/
-//    MODIFY_INVENTORY_ITEM(0x18), // 更新/修改背包道具
+    /**
+     * 服务器状态
+     */
+    SERVERSTATUS(0x12),
+
+    /**
+     * 角色列表
+     */
+    CHARLIST(0x13), // check
+
+    // 0x14 未使用
+
+    /**
+     * 重新登录回应
+     */
+    RELOG_RESPONSE(0x15), // check
+
+    // 0x16 - 0x17 未使用
+
+
+    //    ==================================CWvsContext::OnPacket =================================
     /**
      * 物品栏操作
      */
     INVENTORY_OPERATION(0x18), // check
+
     /**
-     * 任务完成 显示红框右下角
+     * 喇叭（大喇叭/全服喇叭）
      */
-    QUEST_CLEAR(0x1F), //
+    AVATAR_MEGA(0x19),
 
+    // 0x1A - 0x1B 未使用
 
-//    UPDATE_STATS(0x23), // 更新角色属性(HP/MP/EXP等)
-    STAT_CHANGED(0x23), // 状态改变  和org.gms.client.MapleStat关联
+    /**
+     * 地图转移结果
+     */
+    MAP_TRANSFER_RESULT(0x1C),
 
+    // 0x1D - 0x1E 未使用
 
-    GIVE_BUFF(0x3A), // 给予角色Buff
-    CANCEL_BUFF(0x24), // 取消角色Buff
-    UPDATE_SKILLS(0x2F), // 更新技能等级
-    FAME_RESPONSE(0x31), // 人气度操作回应
-    SHOW_STATUS_INFO(0x32), // 显示系统信息提示    右下角提示框，经验、拣到的东西等等
-    SHOW_MESO_GAIN(0x33), // 显示获得金币提示
-    SHOW_QUEST_COMPLETION(0x1F), // 显示任务完成
-    SPAWN_PORTAL(0x29), // 初始化传送门
-    // check ↓
-    CHAR_INFO(0x2A), // 角色信息查看回应
+    /**
+     * 显示任务完成
+     */
+    QUEST_CLEAR(0x1F), // 显示红框右下角
 
-    // check ↓
-    BUDDYLIST(0x2B), // 好友列表操作
+    /**
+     * 显示任务完成
+     */
+    SHOW_QUEST_COMPLETION(0x1F),
+
+    // 0x20 - 0x22 未使用
+
+    /**
+     * 状态改变，和 org.gms.client.MapleStat 关联
+     */
+    STAT_CHANGED(0x23), // 更新角色属性（HP/MP/EXP等）
+
+    /**
+     * 取消角色Buff
+     */
+    CANCEL_BUFF(0x24),
+
+    /**
+     * 备忘录结果
+     */
+    MEMO_RESULT(0x25), // check
+
+    /**
+     * 领取状态改变
+     */
+    CLAIM_STATUS_CHANGED(0x26), // check 2F->26
+
+    /**
+     * 设置驯服怪物信息
+     */
+    SET_TAMING_MOB_INFO(0x27), // check
+
+    // 0x28 未使用
+
+    /**
+     * 初始化传送门
+     */
+    SPAWN_PORTAL(0x29),
+
+    /**
+     * 角色信息查看回应
+     */
+    CHAR_INFO(0x2A), // check
+
+    /**
+     * 好友列表操作
+     */
+    BUDDYLIST(0x2B), // check
+
+    // 0x2C 未使用
+
+    /**
+     * 滚动公告/顶部横幅 dropmsg
+     */
+    SERVERMESSAGE(0x2D), // check
+
+    // 0x2E 未使用
+
+    /**
+     * 更新技能等级
+     */
+    UPDATE_SKILLS(0x2F),
+
+    // 0x30 未使用
+
+    /**
+     * 人气度操作回应
+     */
+    FAME_RESPONSE(0x31),
+
+    /**
+     * 显示系统信息提示（右下角提示框，经验、拣到的东西等）
+     */
+    SHOW_STATUS_INFO(0x32),
+
+    /**
+     * 显示获得金币提示
+     */
+    SHOW_MESO_GAIN(0x33),
+
+    // 0x34 - 0x37 未使用
 
     /**
      * 组队操作回应
      */
     PARTY_OPERATION(0x38),
 
-    // 滚动公告/顶部横幅  dropmsg
-    SERVERMESSAGE(0x2D), //  check
-    AVATAR_MEGA(0x19), // 喇叭(大喇叭/全服喇叭)
-    MULTICHAT(0x55), // 频道/组队/公会多功能聊天
-    WHISPER(0x5E), // 密聊回应/寻找玩家
-    CLOCK(0x61), // 显示时钟倒计时
+    // 0x39 未使用
 
-    IMITATED_NPC_DATA(0x4C), // 仿冒NPC数据(PlayerNPC) —— v053 客户端 CWvsContext::OnPacket case 0x4C -> CNpcPool::OnPacket(0x4C) -> CNpcPool::OnNpcImitateData；0x51 是 v083 的编号，v053 里 0x51 会被 CField 当"系统提示"包丢弃，导致仿冒外形不显示
+    /**
+     * 给予角色Buff
+     */
+    GIVE_BUFF(0x3A),
+
+    // 0x3B - 0x4B 未使用
+
+    /**
+     * 玩家作为NPC召唤
+     * 仿冒NPC数据（PlayerNPC）—— v053 客户端 CWvsContext::OnPacket case 0x4C -> CNpcPool::OnPacket(0x4C) -> CNpcPool::OnNpcImitateData；0x51 是 v083 的编号，v053 里 0x51 会被 CField 当"系统提示"包丢弃，导致仿冒外形不显示
+     */
+    IMITATED_NPC_DATA(0x4C),
+    //    ==================================CWvsContext::OnPacket END =================================
+
+
+
+    // CStage::OnPacket
+    /**
+     * 切换地图/进入游戏
+     */
+    WARP_TO_MAP(0x4D),
+
+    /**
+     * 进入拍卖
+     */
+    SET_ITC(0x4E),
+
+    /**
+     * 进入现金商店
+     */
+    SET_CASH_SHOP(0x4F),
+
+
+    //    ==================================CField::OnPacket  =================================
+
+    /**
+     * 被阻止的地图
+     */
+    BLOCKED_MAP(0x50), //
+
+    /**
+     * 配偶聊天
+     */
+    SPOUSE_CHAT(0x51), //
+
+    /**
+     * 在此地图无法使用召唤物品
+     */
+    SUMMON_ITEM_INAVAILABLE(0x52), //
+
+    /**
+     * 场景效果
+     */
+    FIELD_EFFECT(0x53), // 083 => 0x8A
+
+    /**
+     * 吹风天气效果
+     */
+    BLOW_WEATHER(0x54), // 083 0x8E
+
+    /**
+     * 频道/组队/公会多功能聊天 ??? not sure dwang
+     */
+    MULTICHAT(0x55),
+
+
+    /**
+     *  todo 播放点唱机
+     */
+    PLAY_JUKEBOX(0x56), // ?OnPlayJukeBox@CField@@IAEXAAVCInPacket@@@Z
+
+    // 0x57  sub_4D4AD6 decode1  > 16
+    /**
+     * 管理员结果
+     */
+    ADMIN_RESULT(0x57), //
+
+    /**
+     * 设置任务时间
+     */
+    SET_QUEST_TIME(0x58), //
+
+
+    // 0x59
+    /**
+     * CField::OnWarnMessage
+     */
+    ARIANT_RESULT(0x59),   // CField::OnWarnMessage
+
+
+    // 0x5A - 0x5B 未使用
+
+
+    /**
+     * 设置物体状态
+     */
+    SET_OBJECT_STATE(0x5C), //
+
+    /**
+     * 停止时钟
+     */
+    STOP_CLOCK(0x5D), // sub_4D1C60 ?OnDestroyClock@CField@@IAEXAAVCInPacket@@@Z
+
+    /**
+     * 密聊回应/寻找玩家
+     */
+    WHISPER(0x5E),
+
+    // 0x5F decode1 de1 de2
+    /**
+     * QUIZ（OX问答）
+     */
+    OX_QUIZ(0x5F), //
+
+    /**
+     *  DESC（游戏事件说明）
+     */
+    GMEVENT_INSTRUCTIONS(0x60), //
+
+
+    /**
+     * 显示时钟倒计时
+     */
+    CLOCK(0x61),
 
     /**
      * 连续移动
      */
     CONTI_MOVE(0x62),
+
     /**
      * 连续状态
      */
     CONTI_STATE(0x63),
 
-    SPAWN_PLAYER(0x65), // 地图加载玩家(生成别的玩家)
-    REMOVE_PLAYER_FROM_MAP(0x70), // 地图移除玩家
-    CHATTEXT(0x71), // 玩家普通聊天显示
-    UPDATE_CHAR_BOX(0xFFFF), // 更新角色盒子(如开店/小游戏气泡)
-    SPAWN_SPECIAL_MAPOBJECT(0x72), // 生成特殊地图对象(如风魔手里剑)
-    REMOVE_SPECIAL_MAPOBJECT(0x73), // 移除特殊地图对象
-    MOVE_SUMMON(0x74), // 移动召唤兽
-    SUMMON_ATTACK(0x75), // 召唤兽攻击
-    DAMAGE_SUMMON(0x77), // 召唤兽受击伤害
-    SHOW_SCROLL_EFFECT(0x7A), // 显示卷轴强化效果
-    MOVE_PLAYER(0x84), // 移动玩家同步
-    CLOSE_RANGE_ATTACK(0x87), // 玩家近战攻击同步
-    RANGED_ATTACK(0x8D), // 玩家远程攻击同步
-    MAGIC_ATTACK(0x93), // 玩家魔法攻击同步
-    DAMAGE_PLAYER(0x89), // 玩家受伤同步
-    CANCEL_FOREIGN_BUFF(0x8A), // 取消可见的其他玩家Buff
-
-    // check ↓
-    UPDATE_PARTYMEMBER_HP(0x8B), // 更新组队成员HP显示
-    FACIAL_EXPRESSION(0x8C), // 玩家面部表情同步
-    UPDATE_CHAR_LOOK(0x92), // 更新玩家外观(换装同步)
-    SHOW_FOREIGN_EFFECT(0x85), // 显示其他玩家的效果(升级/技能等)
-    GIVE_FOREIGN_BUFF(0x86), // 给予可见的其他玩家Buff
-
-
-
-
-
-    // check ↓
-    SPAWN_MONSTER(0x96), // 地图生成怪物
-    /**
-     * 移动怪物：是否需要放技能
-     */
-    MOVE_MONSTER_RESPONSE(0x9C), // check
-    DAMAGE_MONSTER(0x9D), // 怪物受到伤害
 
     /**
-     * 获取怪物控制权(由客户端计算怪物AI)
+     * 设置任务完成
      */
-    SPAWN_MONSTER_CONTROL(0xA4), // check
-    KILL_MONSTER(0xA5), // 杀死/移除怪物
-    MOVE_MONSTER(0x97), // 怪物移动同步
+    SET_QUEST_CLEAR(0x64),
+
+
+    /**
+     * 地图加载玩家（生成别的玩家）
+     */
+    SPAWN_PLAYER(0x65),
+
+    /**
+     * 取消椅子
+     */
+    CANCEL_CHAIR(0x66), // check
+
+    /**
+     * 聊天栏提示获得道具
+     */
+    SHOW_ITEM_GAIN_INCHAT(0x67), // check
+
+    /**
+     * 传送准备
+     */
+    LP_UserTeleport(0x68), // check
+
+    // 0x69 未使用
+
+    /**
+     * 幸运袋成功
+     */
+    LUCKSACK_PASS(0x6A), // check
+
+    /**
+     * 幸运袋失败
+     */
+    LUCKSACK_FAIL(0x6B), // check
+
+    /**
+     * 更新任务状态信息
+     */
+    UPDATE_QUEST_INFO(0x6C), // check
+
+    /**
+     * 通知字段减少HP
+     */
+    ON_NOTIFY_HP_DEC_BY_FIELD(0x6D), // check
+
+    // 0x6E 未使用
+
+    /**
+     * 冷却时间
+     */
+    COOLDOWN(0x6F), // check
+
+    /**
+     * 地图移除玩家
+     */
+    REMOVE_PLAYER_FROM_MAP(0x70),
+
+    /**
+     * 玩家普通聊天显示
+     */
+    CHATTEXT(0x71),
+
+    /**
+     * 生成特殊地图对象（如风魔手里剑）
+     */
+    SPAWN_SPECIAL_MAPOBJECT(0x72),
+
+    /**
+     * 移除特殊地图对象
+     */
+    REMOVE_SPECIAL_MAPOBJECT(0x73),
+
+    /**
+     * 移动召唤兽
+     */
+    MOVE_SUMMON(0x74),
+
+    /**
+     * 召唤兽攻击
+     */
+    SUMMON_ATTACK(0x75),
+
+    // 0x76 未使用
+
+    /**
+     * 召唤兽受击伤害
+     */
+    DAMAGE_SUMMON(0x77),
+
+    // 0x78 - 0x79 未使用
+
+    /**
+     * 显示卷轴强化效果
+     */
+    SHOW_SCROLL_EFFECT(0x7A),
+
+    // 0x7B 未使用
+
+    /**
+     * 生成宠物
+     */
+    SPAWN_PET(0x7C),
+
+    /**
+     * 宠物对话 OnAction
+     */
+    PET_CHAT(0x7D),
+
+    // 0x7E 未使用
+
+    /**
+     * 更改宠物名字
+     */
+    PET_NAMECHANGE(0x7F),
+
+    /**
+     * 宠物异常列表
+     */
+    PET_EXCEPTION_LIST(0x80),
+
+    /**
+     * 移动宠物
+     */
+    MOVE_PET(0x81),
+
+    /**
+     * 宠物命令
+     */
+    PET_COMMAND(0x82),
+
+    // 0x83 未使用
+
+    /**
+     * 移动玩家同步
+     */
+    MOVE_PLAYER(0x84),
+
+    /**
+     * 显示其他玩家的效果（升级/技能等）
+     */
+    SHOW_FOREIGN_EFFECT(0x85),
+
+    /**
+     * 给予可见的其他玩家Buff
+     */
+    GIVE_FOREIGN_BUFF(0x86),
+
+    /**
+     * 玩家近战攻击同步
+     */
+    CLOSE_RANGE_ATTACK(0x87),
+
+    // 0x88 未使用
+
+    /**
+     * 玩家受伤同步
+     */
+    DAMAGE_PLAYER(0x89),
+
+    /**
+     * 取消可见的其他玩家Buff
+     */
+    CANCEL_FOREIGN_BUFF(0x8A),
+
+    /**
+     * 更新组队成员HP显示
+     */
+    UPDATE_PARTYMEMBER_HP(0x8B), // check
+
+    /**
+     * 玩家面部表情同步
+     */
+    FACIAL_EXPRESSION(0x8C),
+
+    /**
+     * 玩家远程攻击同步
+     */
+    RANGED_ATTACK(0x8D),
+
+    // 0x8E - 0x90 未使用
+
+    /**
+     * 显示椅子
+     */
+    SHOW_CHAIR(0x91), // check
+
+    /**
+     * 更新玩家外观（换装同步）
+     */
+    UPDATE_CHAR_LOOK(0x92),
+
+    /**
+     * 玩家魔法攻击同步
+     */
+    MAGIC_ATTACK(0x93),
+
+    // 0x94 - 0x95 未使用
+
+    /**
+     * 地图生成怪物
+     */
+    SPAWN_MONSTER(0x96), // check
+
+    /**
+     * 怪物移动同步
+     */
+    MOVE_MONSTER(0x97),
+
+    /**
+     * 显示怪物血条
+     */
+    SHOW_MONSTER_HP(0x98),
+
+    // 0x99 未使用
 
     /**
      * 给怪物施加异常状态
      */
-    APPLY_MONSTER_STATUS(0x9A), //  check
+    APPLY_MONSTER_STATUS(0x9A), // check
 
     /**
      * 取消怪物异常状态
      */
     CANCEL_MONSTER_STATUS(0x9B), // check
-    SHOW_MONSTER_HP(0x98), // 显示怪物血条
 
-
-    /*
-            CNpcPool::OnPacket
+    /**
+     * 移动怪物：是否需要放技能
      */
+    MOVE_MONSTER_RESPONSE(0x9C), // check
+
+    /**
+     * 怪物受到伤害
+     */
+    DAMAGE_MONSTER(0x9D),
+
+    // 0x9E - 0xA3 未使用
+
+    /**
+     * 获取怪物控制权（由客户端计算怪物AI）
+     */
+    SPAWN_MONSTER_CONTROL(0xA4), // check
+
+    /**
+     * 杀死/移除怪物
+     */
+    KILL_MONSTER(0xA5),
+
+    // 0xA6 未使用
+
     /**
      * 地图生成NPC
      */
     SPAWN_NPC(0xA7), // check
 
+    // 0xA8 未使用
+
     /**
      * 设置NPC可脚本化
      */
     SET_NPC_SCRIPTABLE(0xA9), // check
+
+    // 0xAA 未使用
 
     /**
      * 移除NPC
@@ -194,182 +633,267 @@ public enum SendPacketOpcode implements Opcode {
      */
     NPC_ACTION(0xAD), // check
 
+    // 0xAE - 0xB1 未使用
 
-
-    // check ↓
-    DROP_ITEM_FROM_MAPOBJECT(0xB8), // 地图掉落道具
-    // check ↓
-    REMOVE_ITEM_FROM_MAP(0xB9), // 移除地图上的道具(捡起/消失)
+    // 0xB2 - 0XB4 CReactorPool::OnPacket
+    /**
+     * 生成反应堆
+     */
+    REACTOR_SPAWN(0xB2), // check
 
     /**
-     * 生成烟雾效果(如毒雾)
+     * 反应堆被击中
      */
-    SPAWN_MIST(0xBD),  // check
+    REACTOR_HIT(0xB3), // check
+
+    /**
+     * 销毁反应堆
+     */
+    REACTOR_DESTROY(0xB4), // check
+
+    // 0xB5 - 0xB7 未使用
+
+    /**
+     * 生成雇佣商人
+     */
+    SPAWN_HIRED_MERCHANT(0xB5), //check
+    /**
+     * 销毁雇佣商人
+     */
+    DESTROY_HIRED_MERCHANT(0xB6), //check
+    /**
+     * 更新雇佣商人
+     */
+    UPDATE_HIRED_MERCHANT(0xB7), //check
+
+    /**
+     * 地图掉落道具
+     */
+    DROP_ITEM_FROM_MAPOBJECT(0xB8), // check
+
+    /**
+     * 移除地图上的道具（捡起/消失）
+     */
+    REMOVE_ITEM_FROM_MAP(0xB9), // check
+
+    // 0xBA - 0xBC   CMessageBoxPool::OnPacket  不知道这个是个啥
+
+    /**
+     * 无法生成风筝
+     */
+    CANNOT_SPAWN_KITE(0xBA), //
+
+    /**
+     * 生成风筝
+     */
+    SPAWN_KITE(0xBB), //
+
+    /**
+     * 移除风筝
+     */
+    REMOVE_KITE(0xBC), //
+
+
+    /**
+     * 生成烟雾效果（如毒雾）
+     */
+    SPAWN_MIST(0xBD), // check
 
     /**
      * 移除烟雾效果
      */
     REMOVE_MIST(0xBE), // check
 
+    // 0xBF - 0XC0 ?OnPacket@COpenGatePool@@QAEXJAAVCInPacket@@@Z
+
     /**
      * 生成时空门
      */
     SPAWN_DOOR(0xBF), // check
+
     /**
      * 移除时空门
      */
     REMOVE_DOOR(0xC0), // check
-    OPEN_NPC_SHOP(0xD6), // 打开NPC商店窗口
-    CONFIRM_SHOP_TRANSACTION(0xD7), // 商店交易回应
-    OPEN_STORAGE(0xD8), // 打开仓库窗口
-    STORAGE(0xD8), // 仓库
 
-    NPC_TALK(0xC2), // NPC 对话弹窗
-    PLAYER_INTERACTION(0xDD), // 玩家互动窗口(交易/雇佣商店/游戏)
+    // 0xC1 未使用
 
-    // check ↓
-    KEYMAP(0xF6), // 刷新键盘快捷键配置  ok
+    /**
+     * NPC 对话弹窗
+     */
+    NPC_TALK(0xC2),
+
+    // 0xC3 - 0xD4 未使用
+
+
+    /**
+     * 黑龙时间？
+     */
+    HORNTAIL_CAVE(0xD5), // CField::OnHontailTimer
+    /**
+     * 打开NPC商店窗口
+     */
+    OPEN_NPC_SHOP(0xD6),
+
+    /**
+     * 商店交易回应
+     */
+    CONFIRM_SHOP_TRANSACTION(0xD7),
+
+    /**
+     * 仓库
+     */
+    STORAGE(0xD8),
+
+    // d9 - da CStoreBankDlg::OnPacket   未知
+    /**
+     * Fredrick消息
+     */
+    FREDRICK_MESSAGE(0xD9), //
+    /**
+     * Fredrick操作
+     */
+    FREDRICK(0xDA), //
+
+    RPS_GAME(0xDB), // 石头剪刀布游戏
+    MESSENGER(0xDC), // 消息传递  CUIMessenger::OnPacket((CInPacket *)packet)
+
+    /**
+     * 玩家互动窗口（交易/雇佣商店/游戏）
+     */
+    PLAYER_INTERACTION(0xDD), //?OnPacketBase@CMiniRoomBaseDlg@@SAXAAVCInPacket@@@Z
+
+    // 0xDE - 0xEB 未使用
+
+    /**
+     * 包裹 快递员
+     */
+    PARCEL(0xE5), //
+
+
+    /**
+     * 充值参数结果
+     */
+    CHARGE_PARAM_RESULT(0xEC),
+
+    /**
+     * 查询现金结果
+     */
+    QUERY_CASH_RESULT(0xED),
+
+    /**
+     * 现金商店操作
+     */
+    CASHSHOP_OPERATION(0xEE),
+
+    // 0xEF - 0xF5 未使用
+
+    /**
+     * 刷新键盘快捷键配置
+     */
+    KEYMAP(0xF6), // ok
 
     /**
      * v0.53 专用：设置自动使用药水（HP + MP 一次性下发）。
-     * 客户端 CFuncKeyMappedMan::OnAutoPotion(0x4F6244, 由 CField::OnPacket 分发) 依次 Decode4 两个 int：
+     * 客户端 CFuncKeyMappedMan::OnAutoPotion(0x4F6244，由 CField::OnPacket 分发) 依次 Decode4 两个 int：
      * 先 HP 药品ID，再 MP 药品ID。任一项传 0 时客户端会回退到本地配置里的默认药品。
      * 注意：v0.83 客户端用的是 AUTO_HP_POT(0x150) / AUTO_MP_POT(0x151)，两者不可混用。
      */
-    AUTO_POTION(0xF7), // 自动使用HP/MP药水（v0.53 一对下发）  ok
+    AUTO_POTION(0xF7), // ok
+
     /**
      * v0.53 专用：只设置自动使用药水的 HP 药品ID（单个 int）。
      * 客户端 CFuncKeyMappedMan::OnAutoHpPotion(0x4F6293)。
      */
-    AUTO_HP_POT_053(0xF8), // 自动使用HP药水（v0.53 单独下发）
+    AUTO_HP_POT_053(0xF8),
+
+    // 0xF9 - 0xFB 未使用
+
+    // CMapleTVMan::OnPacket
+    /**
+     * 发送电视
+     */
+    SEND_TV(0xFC), //
+    /**
+     * 移除电视
+     */
+    REMOVE_TV(0xFD), //
+    /**
+     * 启用电视
+     */
+    ENABLE_TV(0xFE), //
 
 
-    // check ↓
-    REACTOR_HIT(0xB3), // 反应堆被击中
-    // check ↓
-    REACTOR_SPAWN(0xB2), // 生成反应堆
-    // check ↓
-    REACTOR_DESTROY(0xB4), // 销毁反应堆
-    // check ↓
-    MEMO_RESULT(0x25), // 备忘录结果   ok
-    // check ↓
-    CLAIM_STATUS_CHANGED(0x26), // 领取状态改变  Ok 2F->26
-
-    // check ↓
-    SET_TAMING_MOB_INFO(0x27), // 设置驯服怪物信息
-
-    FIELD_EFFECT(0x53), // 场景效果  083 =》 0x8A
-
-
-    BLOW_WEATHER(0x54), // 吹风天气效果 083 0x8E
-
-
-    // check ↓
-    SHOW_CHAIR(0x91), // 显示椅子
-
-
+    // 0xFF - 0xFFFE 未使用
 
     /**
-     *
-     * CUserLocal::OnPacket
-     *
+     * 更新角色盒子（如开店/小游戏气泡）
      */
+    UPDATE_CHAR_BOX(0xFFFF),
+
+    // ==================== CASHSHOP（无固定 opcode） ====================
 
     /**
-     * 取消椅子
+     * 现金商店购买经验变化
      */
-    CANCEL_CHAIR(0x66), // check
+    CASHSHOP_PURCHASE_EXP_CHANGED(-1), // found thanks to Arnah (Vertisy)
 
     /**
-     * 聊天栏提示获得道具
+     * 现金商店礼物信息结果
      */
-    SHOW_ITEM_GAIN_INCHAT(0x67), // check
+    CASHSHOP_GIFT_INFO_RESULT(-1),
 
     /**
-     * 传送准备
+     * 检查现金商店姓名更改
      */
-    LP_UserTeleport(0x68), //   check
+    CASHSHOP_CHECK_NAME_CHANGE(-1),
 
     /**
-     * 幸运袋成功
+     * 检查现金商店姓名更改可能性结果
      */
-    LUCKSACK_PASS(0x6A), // check
+    CASHSHOP_CHECK_NAME_CHANGE_POSSIBLE_RESULT(-1),
 
     /**
-     * 幸运袋失败
+     * 注册新角色结果
      */
-    LUCKSACK_FAIL(0x6B), // check
-
-
+    CASHSHOP_REGISTER_NEW_CHARACTER_RESULT(-1),
 
     /**
-     * 更新任务状态信息
+     * 检查转移世界可能性结果
      */
-    UPDATE_QUEST_INFO(0x6C), // check
+    CASHSHOP_CHECK_TRANSFER_WORLD_POSSIBLE_RESULT(-1),
 
     /**
-     * 通知字段减少HP
+     * 现金商店扭蛋印章结果
      */
-    ON_NOTIFY_HP_DEC_BY_FIELD(0x6D), // check
+    CASHSHOP_GACHAPON_STAMP_RESULT(-1),
 
     /**
-     * 冷却时间
+     * 现金商店现金物品扭蛋结果
      */
-    COOLDOWN(0x6F), // check
-
-
-
-
-
-    /*CStage::OnPacket*/
+    CASHSHOP_CASH_ITEM_GACHAPON_RESULT(-1),
 
     /**
-     * 切换地图/进入游戏
+     * 现金商店现金扭蛋打开结果
      */
-    WARP_TO_MAP(0x4D),
-    /**
-     * 进入拍卖
-     */
-    SET_ITC(0x4E),
-    /**
-     * 进入现金商店
-     */
-    SET_CASH_SHOP(0x4F),
-
-
-
-
-    /*CCashShop::OnPackett*/
-
-    CHARGE_PARAM_RESULT(0xEC), // 充值参数结果
-    QUERY_CASH_RESULT(0xED), // 查询现金结果
-    CASHSHOP_OPERATION(0xEE), // 现金商店操作
-
-    CASHSHOP_PURCHASE_EXP_CHANGED(-1),   // found thanks to Arnah (Vertisy) // 现金商店购买经验变化
-    CASHSHOP_GIFT_INFO_RESULT(-1), // 现金商店礼物信息结果
-    CASHSHOP_CHECK_NAME_CHANGE(-1), // 检查现金商店姓名更改
-    CASHSHOP_CHECK_NAME_CHANGE_POSSIBLE_RESULT(-1), // 检查现金商店姓名更改可能性结果
-    CASHSHOP_REGISTER_NEW_CHARACTER_RESULT(-1), // 注册新角色结果
-    CASHSHOP_CHECK_TRANSFER_WORLD_POSSIBLE_RESULT(-1), // 检查转移世界可能性结果
-    CASHSHOP_GACHAPON_STAMP_RESULT(-1), // 现金商店扭蛋印章结果
-    CASHSHOP_CASH_ITEM_GACHAPON_RESULT(-1), // 现金商店现金物品扭蛋结果
-    CASHSHOP_CASH_GACHAPON_OPEN_RESULT(-1), // 现金商店现金扭蛋打开结果
+    CASHSHOP_CASH_GACHAPON_OPEN_RESULT(-1),
 
 
 
 
 
-    // CUser::OnPetPacket
-    // ok
 
-    SPAWN_PET(0x7C), // 生成宠物
-    PET_CHAT(0x7D), // 宠物对话 OnAction
-    PET_NAMECHANGE(0x7F), // 更改宠物名字
-    PET_EXCEPTION_LIST(0x80), // 宠物异常列表
 
-    // ok
-    MOVE_PET(0x81), // 移动宠物
-    PET_COMMAND(0x82), // 宠物命令
+
+
+
+
+
+
+
+
+
+
 
     /*
     ==========================================================================================================
@@ -487,27 +1011,13 @@ public enum SendPacketOpcode implements Opcode {
     SET_BACK_EFFECT(0x80), // 设置背景特效
     SET_MAP_OBJECT_VISIBLE(0x81), // 设置地图对象可见性
     CLEAR_BACK_EFFECT(-1), // 清除背景特效
-    BLOCKED_MAP(0x83), // 被阻止的地图
     BLOCKED_SERVER(0x84), // 被阻止的服务器
     FORCED_MAP_EQUIP(-1), // 强制地图装备   没找到
-    SPOUSE_CHAT(0x88), // 配偶聊天
-    SUMMON_ITEM_INAVAILABLE(0x89), // 在此地图无法使用召唤物品
 
     FIELD_OBSTACLE_ONOFF(-1), // 场景障碍物开关                       没找到
     FIELD_OBSTACLE_ONOFF_LIST(-1), // 场景障碍物开关列表               没找到
     FIELD_OBSTACLE_ALL_RESET(-1), // 重置所有场景障碍物                 没找到
-    PLAY_JUKEBOX(0x8F), // 播放点唱机
 
-    ADMIN_RESULT(-1), // 管理员结果                                 没找到
-    OX_QUIZ(0x91), // QUIZ（OX问答）
-    GMEVENT_INSTRUCTIONS(0x92), // DESC（游戏事件说明）
-    // CField_ContiMove::OnPacket
-
-    SET_QUEST_CLEAR(-1), // 设置任务完成   ===========================    0x96
-    SET_QUEST_TIME(-1), // 设置任务时间
-    ARIANT_RESULT(-1),    // thanks lrenex // ARIANT结果
-    SET_OBJECT_STATE(0x99), // 设置物体状态
-    STOP_CLOCK(-1), // 停止时钟
     ARIANT_ARENA_SHOW_RESULT(0x9B), // ARIANT竞技场显示结果
     PYRAMID_GAUGE(0x9D), // 金字塔计数器
     PYRAMID_SCORE(0x9E), // 金字塔分数
@@ -547,15 +1057,9 @@ public enum SendPacketOpcode implements Opcode {
     //Something with mob, but can't figure out00 // 与怪物有关，但无法确定
     ARIANT_THING(0xF9), // ARIANT相关操作
     CATCH_MONSTER(0xFB), // 捕捉怪物
-    CATCH_MONSTER_WITH_ITEM(0xFC), // 使用物品捕捉怪物
-    SHOW_MAGNET(0xFD), // 显示磁铁效果
+    CATCH_MONSTER_WITH_ITEM(-1), // 使用物品捕捉怪物
+    SHOW_MAGNET(-1), // 显示磁铁效果
 
-    SPAWN_HIRED_MERCHANT(0x109), // 生成雇佣商人
-    DESTROY_HIRED_MERCHANT(0x10A), // 销毁雇佣商人
-    UPDATE_HIRED_MERCHANT(0x10B), // 更新雇佣商人
-    CANNOT_SPAWN_KITE(0x10E), // 无法生成风筝
-    SPAWN_KITE(0x10F), // 生成风筝
-    REMOVE_KITE(0x110), // 移除风筝
 
     SNOWBALL_STATE(0x119), // 雪球状态
     HIT_SNOWBALL(0x11A), // 击中雪球
@@ -577,14 +1081,10 @@ public enum SendPacketOpcode implements Opcode {
     SHEEP_RANCH_INFO(0x12B), // 羊牧场信息
     SHEEP_RANCH_CLOTHES(0x12C), // 羊牧场服装
     WITCH_TOWER_SCORE_UPDATE(0x12D),    // thanks lrenex // 巫师塔得分更新
-    HORNTAIL_CAVE(0x12E), // 角龙头洞
-    ZAKUM_SHRINE(0x12F), // 泽库姆神殿
+
     ADMIN_SHOP_MESSAGE(0x133),//lame :P // 管理员商店消息
     ADMIN_SHOP(0x134), // 管理员商店
-    FREDRICK_MESSAGE(0x136), // Fredrick消息
-    FREDRICK(0x137), // Fredrick操作
-    RPS_GAME(0x138), // 石头剪刀布游戏
-    MESSENGER(0x139), // 消息传递
+
 
     TOURNAMENT(0x13B), // 锦标赛
     TOURNAMENT_MATCH_TABLE(0x13C), // 锦标赛匹配表
@@ -595,15 +1095,12 @@ public enum SendPacketOpcode implements Opcode {
     WEDDING_PROGRESS(0x140),//byte step, int groomid, int brideid // 结婚进度
     WEDDING_CEREMONY_END(0x141), // 结婚仪式结束
 
-    PARCEL(0x142), // 礼包
 
 
 
     AUTO_HP_POT(0x150), // 自动使用HP药水
     AUTO_MP_POT(0x151), // 自动使用MP药水
-    SEND_TV(0x155), // 发送电视
-    REMOVE_TV(0x156), // 移除电视
-    ENABLE_TV(0x157), // 启用电视
+
     MTS_OPERATION2(0x15B), // MTS操作2
     MTS_OPERATION(0x15C), // MTS操作
     MAPLELIFE_RESULT(0x15D), // MapleLife结果
