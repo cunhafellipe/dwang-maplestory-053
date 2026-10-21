@@ -2499,4 +2499,31 @@
     <imgdir name="7220002">
         <string name="name" value="妖怪禅师"/>
     </imgdir>
+    <imgdir name="9500196">
+      <string name="name" value="幽灵"/>
+    </imgdir>
+    <imgdir name="9500197">
+      <string name="name" value="透明幽灵"/>
+    </imgdir>
+    <imgdir name="9420007">
+        <string name="name" value="凶暴猴子"/>
+    </imgdir>
+    <imgdir name="9420008">
+        <string name="name" value="母猴子"/>
+    </imgdir>
+    <imgdir name="9420009">
+        <string name="name" value="小猴子"/>
+    </imgdir>
+    <imgdir name="9420011">
+        <string name="name" value="红鬼怪"/>
+    </imgdir>
+    <imgdir name="9420012">
+        <string name="name" value="蓝鬼怪"/>
+    </imgdir>
+    <imgdir name="9420013">
+        <string name="name" value="力大无穷石头鬼怪"/>
+    </imgdir>
+    <imgdir name="9420014">
+        <string name="name" value="六手邪神"/>
+    </imgdir>
 </imgdir>

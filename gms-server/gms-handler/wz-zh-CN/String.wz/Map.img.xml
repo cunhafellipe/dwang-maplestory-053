@@ -18965,6 +18965,58 @@
             <string name="streetName" value="泰国"/>
             <string name="mapName" value="猴丛林藤五"/>
         </imgdir>
+        <imgdir name="501000000">
+            <string name="streetName" value="泰国"/>
+            <string name="mapName" value="泰国金庙"/>
+        </imgdir>
+        <imgdir name="501010000">
+            <string name="streetName" value="泰国"/>
+            <string name="mapName" value="猴丛林藤蔓一"/>
+        </imgdir>
+        <imgdir name="501010100">
+            <string name="streetName" value="泰国"/>
+            <string name="mapName" value="猴丛林藤蔓二"/>
+        </imgdir>
+        <imgdir name="501020000">
+            <string name="streetName" value="泰国"/>
+            <string name="mapName" value="猴丛林藤蔓三"/>
+        </imgdir>
+        <imgdir name="501020100">
+            <string name="streetName" value="泰国"/>
+            <string name="mapName" value="猴丛林藤蔓四"/>
+        </imgdir>
+        <imgdir name="501030000">
+            <string name="streetName" value="泰国"/>
+            <string name="mapName" value="巨人洞穴 I"/>
+        </imgdir>
+        <imgdir name="501030100">
+            <string name="streetName" value="泰国"/>
+            <string name="mapName" value="巨人洞穴 II"/>
+        </imgdir>
+        <imgdir name="501030101">
+            <string name="streetName" value="泰国"/>
+            <string name="mapName" value="巨人洞穴 III"/>
+        </imgdir>
+        <imgdir name="501030102">
+            <string name="streetName" value="泰国"/>
+            <string name="mapName" value="巨人洞穴 IV"/>
+        </imgdir>
+        <imgdir name="501030103">
+            <string name="streetName" value="泰国"/>
+            <string name="mapName" value="巨人洞穴 V"/>
+        </imgdir>
+        <imgdir name="501030104">
+            <string name="streetName" value="泰国"/>
+            <string name="mapName" value="巨大的密室"/>
+        </imgdir>
+        <imgdir name="501030105">
+            <string name="streetName" value="泰国"/>
+            <string name="mapName" value="室无望"/>
+        </imgdir>
+        <imgdir name="501020200">
+            <string name="streetName" value="泰国"/>
+            <string name="mapName" value="猴丛林藤五"/>
+        </imgdir>
     </imgdir>
     <imgdir name="china">
         <imgdir name="782000001">
