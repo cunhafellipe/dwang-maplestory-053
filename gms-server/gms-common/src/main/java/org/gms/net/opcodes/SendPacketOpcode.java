@@ -30,7 +30,13 @@ public enum SendPacketOpcode implements Opcode {
      */
     LOGIN_STATUS(0x00), // check
 
-    // 0x01 - 0x02 未使用
+    // 0x01 有处理器：CLogin::OnPacket(case 0x01) -> CLogin__OnGuestIDLogin_or_WorldMsg @0x533CC8，只 DecodeStr 存进 CLogin+0x190
+    //      （下方北斗段的 GUEST_ID_LOGIN(0x01) 编号在 v053 上正好一致）
+    /**
+     * 查看全部角色结果（v053: CLogin::OnPacket(case 0x02) -> CLogin::OnViewAllCharResult @0x534E76）
+     * 客户端文案：StringPool 3654 找不到任何角色 / 3655 已连接服务器 / 3656 未知错误
+     */
+    VIEW_ALL_CHAR_RESULT(0x02),
 
     // ==================== CHANNEL ====================
 
@@ -39,7 +45,11 @@ public enum SendPacketOpcode implements Opcode {
      */
     CHANGE_CHANNEL(0x03), // 更改频道
 
-    // 0x04 未使用
+    /**
+     * 进入游戏服的服务器地址（v053: CLogin::OnPacket(case 0x04) -> 0x5353EF）
+     * 与 SERVER_IP(0x0C)@0x5356B9 是同一份实现的第二个入口（GoToGameServer），两条都做 inet_addr/ntohs 后连游戏服。
+     */
+    SERVER_IP_2(0x04),
 
     // ==================== GENERAL ====================
 
@@ -68,7 +78,16 @@ public enum SendPacketOpcode implements Opcode {
      */
     PING(0x09), // 心跳包
 
-    // 0x0A - 0x0B 未使用
+    /**
+     * 认证码变更（v053: CClientSocket::ProcessPacket @0x46AD00 case 0x0A -> 0x46AEF7）
+     * Decode1 flags：bit0=付费网吧提示、bit1=弹提示（StringPool 363/364）、bit2=直接抛 CDisconnectException 断开。
+     */
+    AUTHEN_CODE_CHANGED(0x0A),
+
+    /**
+     * 认证消息（v053: case 0x0B -> 0x46B072，Decode4 + Decode1 -> sub_77E1E7）
+     */
+    AUTHEN_MESSAGE(0x0B),
 
     /**
      * 服务器IP（进入游戏世界）
@@ -80,7 +99,21 @@ public enum SendPacketOpcode implements Opcode {
      */
     PIN_OPERATION(0x0D),
 
-    // 0x0E - 0x11 未使用
+    /**
+     * 选择角色后请求迁移（v053: CLogin::OnPacket(case 0x0E) -> 0x53633F）
+     * Decode1 槽位 + Decode1 结果；成功时关窗口并发送 COutPacket(0x03)（迁移/换频道）带角色ID。
+     */
+    SELECT_CHARACTER_RESULT(0x0E),
+
+    // 0x0F 有处理器：0x53645B —— 关闭窗口后 Decode1，失败时弹 StringPool "Try Again!"（重试提示），成功则回调虚函数
+
+    /**
+     * 安全客户端（HackShield/GameGuard 挑战应答，v053: ProcessPacket case 0x10 -> 0x795194）
+     * Decode1 子类型 0/2/3 分别转到 sub_7951D3 / sub_79521D / sub_795230。
+     */
+    SECURITY_CLIENT(0x10),
+
+    // 0x11 有处理器：0x5367FC —— Decode1 失败弹 CLoginUtilDlg::Error(15)，成功调 sub_54C8F6(8) + sub_54FFA0(1)
 
     /**
      * 服务器状态
@@ -92,14 +125,17 @@ public enum SendPacketOpcode implements Opcode {
      */
     CHARLIST(0x13), // check
 
-    // 0x14 未使用
+    /**
+     * 数据 CRC 校验（v053: ProcessPacket case 0x14 -> 0x46B0C8，Decode2 条数 + 22*条数字节，回 COutPacket(0x12)）
+     */
+    CHECK_CRC_RESULT_053(0x14),
 
     /**
      * 重新登录回应
      */
     RELOG_RESPONSE(0x15), // check
 
-    // 0x16 - 0x17 未使用
+    // 0x16 - 0x17 未使用（已验证：ProcessPacket 无 case；0x18 以下不进 CWvsContext，落到 CStage -> CLogin::OnPacket 的 switch 里也没有这两个 case）
 
 
     //    ==================================CWvsContext::OnPacket =================================
@@ -113,14 +149,26 @@ public enum SendPacketOpcode implements Opcode {
      */
     AVATAR_MEGA(0x19),
 
-    // 0x1A - 0x1B 未使用
+    /**
+     * 清除头顶喇叭（v053: CWvsContext::OnPacket case 0x1A -> 0x7806B9）
+     * 与 v095 CWvsContext::OnClearAvatarMegaphone 完全同构：读 m_bAvatarMegaphone(+8)，为真则 ByeAvatarMegaphone(m_pAvatarMegaphone +11704)，然后清零。整包无字段。
+     */
+    CLEAR_AVATAR_MEGAPHONE_053(0x1A),
+
+    // 0x1B 有处理器：0x7806D5 —— Decode1 flag；flag=0 -> Notice(StringPool 507 改名申请已提交)；flag=1 再 Decode1，0 -> Notice(3240 未知错误)，1 -> DecodeStr 后 Notice(文本)
 
     /**
      * 地图转移结果
      */
     MAP_TRANSFER_RESULT(0x1C),
 
-    // 0x1D - 0x1E 未使用
+    /**
+     * 防外挂答题结果（v053: CWvsContext::OnPacket case 0x1D -> 0x77DC0C，推测）
+     * Decode1 类型；type=4 再 Decode2+Decode2+Decode1 后建窗口(sub_638299)；type=5 先销毁旧窗口。
+     */
+    ANTI_MACRO_RESULT(0x1D),
+
+    // 0x1E 未使用（已验证：CWvsContext::OnPacket 没有 case 0x1E）
 
     /**
      * 显示任务完成
@@ -132,7 +180,14 @@ public enum SendPacketOpcode implements Opcode {
      */
     SHOW_QUEST_COMPLETION(0x1F),
 
-    // 0x20 - 0x22 未使用
+    /**
+     * 举报角色结果（新版，带举报理由/每周次数；v053: CWvsContext::OnPacket case 0x20 -> 0x77E399）
+     * StringPool 3060-3076 全是举报文案：本周还剩 %d 次、请输入举报理由、只能在 %d~%d 之间举报、你已被举报。
+     */
+    REPORT_CHARACTER_RESULT(0x20),
+
+    // 0x21 有处理器：0x77E5F6 —— Decode1 + Decode1 写入 CWvsContext+10828/+10829，正是 0x20 里 只能在 %d~%d 之间举报 用的时间窗（对应 v083 CLAIM_AVAILABLE_TIME）
+    // 0x22 有处理器：0x779367 —— 取 CharacterData(DecodeStr) + Decode1 + Decode1，再对 ZArray 重新分配（背包/槽位数量相关）
 
     /**
      * 状态改变，和 org.gms.client.MapleStat 关联
@@ -159,7 +214,11 @@ public enum SendPacketOpcode implements Opcode {
      */
     SET_TAMING_MOB_INFO(0x27), // check
 
-    // 0x28 未使用
+    /**
+     * 公会操作结果（v053: CWvsContext::OnPacket case 0x28 -> 0x78581B）
+     * StringPool 323-351 / 2953-2974 / 3215-3219：邀请、拒绝、加入、踢出、退出、解散、公会名占用、公会任务等全部公会消息。
+     */
+    GUILD_RESULT(0x28),
 
     /**
      * 初始化传送门
@@ -176,21 +235,25 @@ public enum SendPacketOpcode implements Opcode {
      */
     BUDDYLIST(0x2B), // check
 
-    // 0x2C 未使用
+    // 0x2C 未使用（已验证：CWvsContext::OnPacket @0x76A69B 没有 case 0x2C）
 
     /**
      * 滚动公告/顶部横幅 dropmsg
      */
     SERVERMESSAGE(0x2D), // check
 
-    // 0x2E 未使用
+    /**
+     * 雇佣商人/仓库使用检查（v053: CWvsContext::OnPacket case 0x2E -> 0x77E7FB）
+     * StringPool 3145 商店开在频道%s自由市场%d / 3146 别的角色正在使用 / 3147 当前无法开店 / 3149+3170 请先找 Fredrick 取回物品 / 167,168 雇佣商人改名成功失败。
+     */
+    ENTRUSTED_SHOP_CHECK_RESULT_053(0x2E),
 
     /**
      * 更新技能等级
      */
     UPDATE_SKILLS(0x2F),
 
-    // 0x30 未使用
+    // 0x30 有处理器：0x779C31 —— 只清 CWvsContext+2080、写 +2081=当前时间，再 Decode1 丢弃；是请求锁(ExclRequest)时间戳刷新，无可见效果
 
     /**
      * 人气度操作回应
@@ -207,21 +270,94 @@ public enum SendPacketOpcode implements Opcode {
      */
     SHOW_MESO_GAIN(0x33),
 
-    // 0x34 - 0x37 未使用
+    /**
+     * 举报角色结果（旧版，每日 10 次；v053: CWvsContext::OnPacket case 0x34 -> 0x77FA2F）
+     * StringPool 2701 举报成功 / 2702 找不到用户 / 2703 每天只能举报 10 次 / 2704 你被举报 / 2705 未知原因失败。
+     */
+    SUE_CHARACTER_RESULT_053(0x34),
+
+    // 0x35 未使用（已验证：CWvsContext::OnPacket 没有 case 0x35）
+
+    /**
+     * 交易金币上限提示（v053: CWvsContext::OnPacket case 0x36 -> 0x77BC97）
+     * StringPool 3642：15 级以下每天只能交易 100 万金币。
+     */
+    TRADE_MONEY_LIMIT_053(0x36),
+
+    // 0x37 有处理器：0x77BC7E —— Decode1 写 CWvsContext+2059（与 CLogin case 0x0E 写的是同一成员，属登录/切换角色的状态字节）
 
     /**
      * 组队操作回应
      */
     PARTY_OPERATION(0x38),
 
-    // 0x39 未使用
+    // 0x39 未使用（已验证：CWvsContext::OnPacket 没有 case 0x39）
 
     /**
      * 给予角色Buff
      */
     GIVE_BUFF(0x3A),
 
-    // 0x3B - 0x4B 未使用
+    /**
+     * 孵化器（猪猪蛋）结果（v053: CWvsContext::OnPacket case 0x3B -> 0x77EB02）
+     * StringPool 282/283 获得物品、3109 背包已满、3110 猪猪蛋里发现物品。
+     */
+    INCUBATOR_RESULT_053(0x3B),
+
+    // 0x3C 有处理器：0x77F239 —— StringPool 3295 找不到你输入的物品（物品检索/商店扫描类）
+    // 0x3D 有处理器：0x77F508 —— 取 dword_884364 的单例窗口后调用 sub_68802F（全客户端下载链接/外链类弹窗）
+
+    /**
+     * 订婚请求（v053: CWvsContext::OnPacket case 0x3E -> 0x77FB7C）
+     * StringPool 3376 %s 向你求婚，是否接受？
+     */
+    MARRIAGE_REQUEST_053(0x3E),
+
+    /**
+     * 订婚/结婚结果（v053: CWvsContext::OnPacket case 0x3F -> 0x77FCDD）
+     * StringPool 3378-3427 全部结果码：已订婚、已结婚、性别相同、对方已婚、求婚被拒、解除婚约、预约成功等。
+     */
+    MARRIAGE_RESULT_053(0x3F),
+
+    // 0x40 有处理器：0x78037D —— Decode1 类型（9/10/0xB/0xC/0xD/0xE/0xF/0x10），分派到 sub_74BB8B / sub_74D4E1（婚礼/结婚礼物相关窗口）
+    // 0x41 有处理器：0x77126E —— 单例 dword_8842D8 存在时调用 sub_64A4FA（通知伴侣地图转移类）
+    // 0x42 有处理器：0x76A9D3 —— Decode4 写 CWvsContext+2695
+
+    /**
+     * 宠物吃现金饲料结果（v053: CWvsContext::OnPacket case 0x43 -> 0x77F53E）
+     * StringPool 3510 宠物不能吃这个食物
+     */
+    CASH_PET_FOOD_RESULT_053(0x43),
+
+    /**
+     * 显示头顶喇叭（v053: CWvsContext::OnPacket case 0x44 -> 0x778C5A）
+     * Decode1 flag + DecodeStr 存入 CWvsContext+11524/+11528，交给 CUIStatusBar 显示。
+     */
+    SET_AVATAR_MEGAPHONE_053(0x44),
+
+    // 0x45 有处理器：0x778CE5 —— Decode1 写 CWvsContext+2883（单个状态字节）
+    // 0x46 未使用（已验证：CWvsContext::OnPacket 没有 case 0x46）
+    // 0x47 有处理器：0x7803B8 —— Decode1 结果码（9/10/0xB~0x10 分别走 sub_74BB8B / sub_74D4E1），无文案
+
+    /**
+     * 使用头顶喇叭的结果（v053: CWvsContext::OnPacket case 0x48 -> 0x780421）
+     * StringPool 3463 喇叭需 10 级以上、3637 排队超过 15 秒请稍后再用。
+     */
+    AVATAR_MEGAPHONE_RESULT_053(0x48),
+
+    /**
+     * 取消转服结果（v053: CWvsContext::OnPacket case 0x49 -> 0x78077C）
+     * StringPool 3685 只有正在转服中的角色才能取消
+     */
+    CANCEL_TRANSFER_WORLD_RESULT_053(0x49),
+
+    /**
+     * GM 强制关店结果（v053: CWvsContext::OnPacket case 0x4A -> 0x78083E）
+     * StringPool 3140 你的店被 GM 关闭，请找 Fred 取回物品
+     */
+    DESTROY_SHOP_RESULT_053(0x4A),
+
+    // 0x4B 有处理器：0x76A9E9 —— 只 Decode1 后丢弃（占位/废弃包）
 
     /**
      * 玩家作为NPC召唤
@@ -306,7 +442,12 @@ public enum SendPacketOpcode implements Opcode {
     ARIANT_RESULT(0x59),   // CField::OnWarnMessage
 
 
-    // 0x5A - 0x5B 未使用
+    /**
+     * 换频道请求被拒（v053: CField::OnPacket case 0x5A -> CField::OnTransferChannelReqIgnored @0x4D1D58）
+     */
+    TRANSFER_CHANNEL_REQ_IGNORED(0x5A),
+
+    // 0x5B 有处理器：0x4D1EE1 —— 纯转发：虚表+0x14 调用并把全局 dword_881960 当 opcode 传进去（运行时才有值，v053 实际不用）
 
 
     /**
@@ -378,7 +519,7 @@ public enum SendPacketOpcode implements Opcode {
      */
     LP_UserTeleport(0x68), // check
 
-    // 0x69 未使用
+    // 0x69 未使用（已验证：CUserPool::OnPacket 101..149 -> CUserLocal::OnPacket @0x6F4837 的 switch 里没有 0x69；v083 对应位置 0xD0 也是空的）
 
     /**
      * 幸运袋成功
@@ -400,7 +541,7 @@ public enum SendPacketOpcode implements Opcode {
      */
     ON_NOTIFY_HP_DEC_BY_FIELD(0x6D), // check
 
-    // 0x6E 未使用
+    // 0x6E 有 case 但处理器是空函数（CUserLocal::OnPacket case 0x6E -> nullsub_11 @0x6FC8E2），等于客户端忽略
 
     /**
      * 冷却时间
@@ -437,21 +578,22 @@ public enum SendPacketOpcode implements Opcode {
      */
     SUMMON_ATTACK(0x75),
 
-    // 0x76 未使用
+    // 0x76 有处理器：CUserPool::OnUserCommonPacket(113..131) -> sub_6E5E14 的 case 118 -> 0x6179E1（召唤兽同步包，Decode1；与 0x72~0x77 同一组）
 
     /**
      * 召唤兽受击伤害
      */
     DAMAGE_SUMMON(0x77),
 
-    // 0x78 - 0x79 未使用
+    // 0x78 有处理器：0x6E76A0（只 Decode4，角色广告牌/椅子类一次性状态）
+    // 0x79 有处理器：0x6E5BFA（Decode1+Decode4+DecodeStr+5 个 Decode1，气泡对话框/迷你房间留言）
 
     /**
      * 显示卷轴强化效果
      */
     SHOW_SCROLL_EFFECT(0x7A),
 
-    // 0x7B 未使用
+    // 0x7B 有处理器：0x6E507B（Decode1 + DecodeStr，给角色挂一段文字气泡/黑板）
 
     /**
      * 生成宠物
@@ -463,7 +605,7 @@ public enum SendPacketOpcode implements Opcode {
      */
     PET_CHAT(0x7D),
 
-    // 0x7E 未使用
+    // 0x7E 有处理器：CUser::OnPetPacket @0x6E5DA0 的 case 0x7E -> 虚函数 CUser vtable+0x1C（宠物与主人互动动作，对应 v083 的 OnPetActivated 分支）
 
     /**
      * 更改宠物名字
@@ -485,7 +627,7 @@ public enum SendPacketOpcode implements Opcode {
      */
     PET_COMMAND(0x82),
 
-    // 0x83 未使用
+    // 0x83 未使用（已验证：CUser::OnPetPacket 只接到 0x82，UserCommon 的 124..130 到此为止）
 
     /**
      * 移动玩家同步
@@ -507,7 +649,7 @@ public enum SendPacketOpcode implements Opcode {
      */
     CLOSE_RANGE_ATTACK(0x87),
 
-    // 0x88 未使用
+    // 0x88 有处理器：CUserPool::OnUserRemotePacket(132..148) -> 0x712A4C（只 Decode4，远处玩家的单值状态）
 
     /**
      * 玩家受伤同步
@@ -534,7 +676,9 @@ public enum SendPacketOpcode implements Opcode {
      */
     RANGED_ATTACK(0x8D),
 
-    // 0x8E - 0x90 未使用
+    // 0x8E 有处理器：0x6E8015 CUser::SetActiveEffectItem（Decode4 = 道具ID，显示角色身上的特效道具）
+    // 0x8F 有处理器：0x714AEB（DecodeStr，远处玩家的文字类状态）
+    // 0x90 有处理器：0x7128E5（Decode4+三个 Decode1，远处玩家的复合状态）
 
     /**
      * 显示椅子
@@ -551,7 +695,8 @@ public enum SendPacketOpcode implements Opcode {
      */
     MAGIC_ATTACK(0x93),
 
-    // 0x94 - 0x95 未使用
+    // 0x94 有处理器：0x714B36（Decode2+Decode1+Decode2+Decode1）
+    // 0x95 未使用（已验证：OnUserRemotePacket 只到 148，149 在其分派范围内但没有对应 case）
 
     /**
      * 地图生成怪物
@@ -568,7 +713,7 @@ public enum SendPacketOpcode implements Opcode {
      */
     SHOW_MONSTER_HP(0x98),
 
-    // 0x99 未使用
+    // 0x99 有处理器：CMobPool::OnMobPacket(0x97..0xA3) -> 0x586D13（Decode1 -> sub_583A8D）；v083 对应位置 0xF1 已被删除，属废弃包
 
     /**
      * 给怪物施加异常状态
@@ -590,7 +735,12 @@ public enum SendPacketOpcode implements Opcode {
      */
     DAMAGE_MONSTER(0x9D),
 
-    // 0x9E - 0xA3 未使用
+    // 0x9E 有处理器：0x586EF0（Decode4 + DecodeStr 类 -> sub_5F59EE/sub_40E890，怪物说话气泡）
+    // 0x9F 未使用（已验证：CMobPool::OnMobPacket 没有 case 0x9F）
+    // 0xA0 有处理器：0x5862CF（Decode1 开关 + Variant 相关，怪物身上的道具/特效）
+    // 0xA1 未使用（已验证：CMobPool::OnMobPacket 没有 case 0xA1）
+    // 0xA2 有处理器：0x586444（Decode4 + Decode2 + 当前时间 -> 写计时器）
+    // 0xA3 有处理器：0x586FA0（Decode4 -> sub_583AE7）
 
     /**
      * 获取怪物控制权（由客户端计算怪物AI）
@@ -602,21 +752,21 @@ public enum SendPacketOpcode implements Opcode {
      */
     KILL_MONSTER(0xA5),
 
-    // 0xA6 未使用
+    // 0xA6 未使用（已验证：CMobPool::OnPacket 只接到 0xA5，0xA6 无人分发）
 
     /**
      * 地图生成NPC
      */
     SPAWN_NPC(0xA7), // check
 
-    // 0xA8 未使用
+    // 0xA8 未使用（已验证：CNpcPool::OnNpcTemplatePacket @0x5A3317 里只有 case 0xA9）
 
     /**
      * 设置NPC可脚本化
      */
     SET_NPC_SCRIPTABLE(0xA9), // check
 
-    // 0xAA 未使用
+    // 0xAA 未使用（同上：OnNpcTemplatePacket 只处理 0xA9 -> CNpcPool__OnNpcTemplate @0x5A6A37）
 
     /**
      * 移除NPC
@@ -633,7 +783,12 @@ public enum SendPacketOpcode implements Opcode {
      */
     NPC_ACTION(0xAD), // check
 
-    // 0xAE - 0xB1 未使用
+    /**
+     * NPC 特殊动作（v053: CNpcPool::OnNpcPacket case 0xAE -> CNpc::OnSetSpecialAction @0x5A0A80）
+     */
+    NPC_SET_SPECIAL_ACTION(0xAE),
+
+    // 0xAF 未使用（不在任何 pool 区间）；0xB0 - 0xB1 未使用（CReactorPool::OnPacket 只处理 0xB2/0xB3/0xB4）
 
     // 0xB2 - 0XB4 CReactorPool::OnPacket
     /**
@@ -651,7 +806,8 @@ public enum SendPacketOpcode implements Opcode {
      */
     REACTOR_DESTROY(0xB4), // check
 
-    // 0xB5 - 0xB7 未使用
+    // 0xB5 - 0xB7 就是下面的 SPAWN_HIRED_MERCHANT / DESTROY_HIRED_MERCHANT / UPDATE_HIRED_MERCHANT（旧注释已过期）；
+    // 客户端侧为 CEmployeePool::OnEmployeeEnterField @0x4BD60D / OnEmployeeLeaveField @0x4BD6AA / OnEmployeeMiniRoomBalloon @0x4BD708
 
     /**
      * 生成雇佣商人
@@ -716,14 +872,14 @@ public enum SendPacketOpcode implements Opcode {
      */
     REMOVE_DOOR(0xC0), // check
 
-    // 0xC1 未使用
+    // 0xC1 未使用（已验证：CScriptMan::OnPacket @0x5EA71F 里只有 case 0xC2 -> OnScriptMessage）
 
     /**
      * NPC 对话弹窗
      */
     NPC_TALK(0xC2),
 
-    // 0xC3 - 0xD4 未使用
+    // 0xC3 - 0xD4 未使用（已验证：CField 只把 193..195 转给 CScriptMan（且只处理 0xC2）、214..215 转给 CShopDlg；196..213 无人分发）
 
 
     /**
@@ -763,7 +919,7 @@ public enum SendPacketOpcode implements Opcode {
      */
     PLAYER_INTERACTION(0xDD), //?OnPacketBase@CMiniRoomBaseDlg@@SAXAAVCInPacket@@@Z
 
-    // 0xDE - 0xEB 未使用
+    // 0xDE - 0xE4、0xE6 - 0xEB 未使用（0xE5 = PARCEL，CField::OnPacket 有显式 case -> CParcelDlg::OnPacket；222..235 其余无人分发）
 
     /**
      * 包裹 快递员
@@ -786,7 +942,7 @@ public enum SendPacketOpcode implements Opcode {
      */
     CASHSHOP_OPERATION(0xEE),
 
-    // 0xEF - 0xF5 未使用
+    // 0xEF - 0xF5 未使用（已验证：CField 只把 246..248 转给 CFuncKeyMappedMan；239..245 无人分发）
 
     /**
      * 刷新键盘快捷键配置
@@ -807,7 +963,9 @@ public enum SendPacketOpcode implements Opcode {
      */
     AUTO_HP_POT_053(0xF8),
 
-    // 0xF9 - 0xFB 未使用
+    // 0xF9 - 0xFB 未使用（已验证：CField::OnPacket 只把 251..256 转给 CMapleTVMan::OnPacket @0x55B521，
+    // 而 CMapleTVMan 里只有 0xFC OnSetMessage / 0xFD OnClearMessage / 0xFE OnSendMessageResult 三个 case；
+    // 0xF9(249)、0xFA(250) 连转发都没有，0xFB(251) 转进去后也没有对应 case）
 
     // CMapleTVMan::OnPacket
     /**
@@ -824,7 +982,7 @@ public enum SendPacketOpcode implements Opcode {
     ENABLE_TV(0xFE), //
 
 
-    // 0xFF - 0xFFFE 未使用
+    // 0xFF - 0xFFFE 没有了
 
     /**
      * 更新角色盒子（如开店/小游戏气泡）
