@@ -13,6 +13,7 @@
 
 5. 补漏（2026-10-21 夜，实测反馈）：① `Data\String\Map.img` 的 `thai` 节点只加了 059 的 9 张图，北斗那 13 张没加 → 5010* 地图没名字，已补齐（thai 下 22 个）；② `Data\String\Npc.img` 没加金庙 NPC 名字（9250032-9250050、9330072、9250002 纳雷斯船长）已补；③ `Data\String\Mob.img` 补 9420007-9420014 七个名字；④ **`Data\Map\MapHelper.img` 缺 `mark/GoldTempleTH`**（13 张图的 `info/mapMark=GoldTempleTH`，客户端原来只有 `mark/Thai`）——进 5010* 图时取地图标记图失败会闪退，已从北斗转过来补上。以上 4 个文件已同步 `client-dist\data\Data`。
 
+
 ## 20261015
 1. 定位并修复「客户端商城顶部分类标签与实际商品错位一格」（点上衣出裤裙、点裤裙出鞋子）：`v53-client\Data\Etc\Category.img` 是 2026-09-21 用 OrzRepacker 从 `汉化\cn-v1-xml\Etc.wz\Category.img.xml`（汉化时把 Name 相对 `Category`/`CategorySub` 整体错位了一格的源文件）整包导出的；053 客户端是「用同一条节点的 `Name` 当标签文字、用该节点的 `Category`+`CategorySub` 拼 SN 前缀选商品」，所以名字错位 = 标签与内容错位（2/4 挂着上衣的名字却装的是 sub=5 的裤裙）。已修 `client-dist\data\Data\Etc\Category.img`（Name 与 Sub 对齐，并把 2/4 由「热销」改为「上衣」）和 `gms-server/gms-handler/wz-zh-CN/Etc.wz/Category.img.xml`（同步 2/4=上衣），并重算 `client-dist.sha256`；客户端要跑 `client-dist\tools\更新客户端.bat` 才会替换 9-21 的旧文件。
 2. 新增文档 `doc/商城加载相关说明.md`：

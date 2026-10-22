@@ -3,6 +3,6 @@
  */
 
 function start() {
-    cm.sendStorage();
+    cm.getPlayer().getStorage().sendStorage(cm.getClient(), 9250031);
     cm.dispose();
 }
