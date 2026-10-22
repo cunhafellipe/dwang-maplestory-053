@@ -12,9 +12,9 @@ INSERT INTO `shopitems` ( `shopid`, `itemid`, `price`, `pitch`, `position`) VALU
 -- 爆率
 delete from `drop_data` where dropperid in (9420007, 9420008, 9420009, 9420011, 9420012, 9420013, 9420014);
 -- 9420007
-INSERT INTO `drop_data` (`id`, `dropperid`, `itemid`, `minimum_quantity`, `maximum_quantity`, `questid`, `chance`) VALUES ( 9420007, 4031723, 1, 1, 4415, 400000);
-INSERT INTO `drop_data` (`id`, `dropperid`, `itemid`, `minimum_quantity`, `maximum_quantity`, `questid`, `chance`) VALUES ( 9420007, 4031725, 1, 1, 4412, 50000);
-INSERT INTO `drop_data` (`id`, `dropperid`, `itemid`, `minimum_quantity`, `maximum_quantity`, `questid`, `chance`) VALUES ( 9420007, 4000307, 1, 1, 0, 400000);
+INSERT INTO `drop_data` (`dropperid`, `itemid`, `minimum_quantity`, `maximum_quantity`, `questid`, `chance`) VALUES ( 9420007, 4031723, 1, 1, 4415, 400000);
+INSERT INTO `drop_data` (`dropperid`, `itemid`, `minimum_quantity`, `maximum_quantity`, `questid`, `chance`) VALUES ( 9420007, 4031725, 1, 1, 4412, 50000);
+INSERT INTO `drop_data` (`dropperid`, `itemid`, `minimum_quantity`, `maximum_quantity`, `questid`, `chance`) VALUES ( 9420007, 4000307, 1, 1, 0, 400000);
 
 
 -- 9420008
