@@ -36756,4 +36756,10 @@
   <imgdir name="9999999">
     <string name="name" value="test"/>
   </imgdir>
+    <imgdir name="9310061">
+        <string name="name" value="快乐百宝箱"/>
+    </imgdir>
+    <imgdir name="9310045">
+        <string name="name" value="枫叶电视"/>
+    </imgdir>
 </imgdir>

@@ -2351,6 +2351,318 @@
             <int name="timeLimited" value="1"/>
         </imgdir>
     </imgdir>
+  <imgdir name="03994059">
+    <imgdir name="info">
+      <canvas name="icon" format="1" scale="0">
+        <vector name="origin" x="0" y="30"/>
+      </canvas>
+      <canvas name="iconRaw" format="1" scale="0">
+        <vector name="origin" x="0" y="28"/>
+      </canvas>
+      <int name="price" value="100"/>
+      <int name="slotMax" value="100"/>
+    </imgdir>
+  </imgdir>
+  <imgdir name="03994060">
+    <imgdir name="info">
+      <canvas name="icon" format="1" scale="0">
+        <vector name="origin" x="0" y="29"/>
+      </canvas>
+      <canvas name="iconRaw" format="1" scale="0">
+        <vector name="origin" x="0" y="29"/>
+      </canvas>
+      <int name="price" value="100"/>
+      <int name="slotMax" value="100"/>
+    </imgdir>
+  </imgdir>
+  <imgdir name="03994061">
+    <imgdir name="info">
+      <canvas name="icon" format="1" scale="0">
+        <vector name="origin" x="0" y="28"/>
+      </canvas>
+      <canvas name="iconRaw" format="1" scale="0">
+        <vector name="origin" x="0" y="28"/>
+      </canvas>
+      <int name="price" value="100"/>
+      <int name="slotMax" value="100"/>
+    </imgdir>
+  </imgdir>
+  <imgdir name="03994062">
+    <imgdir name="info">
+      <canvas name="icon" format="1" scale="0">
+        <vector name="origin" x="0" y="29"/>
+      </canvas>
+      <canvas name="iconRaw" format="1" scale="0">
+        <vector name="origin" x="0" y="28"/>
+      </canvas>
+      <int name="price" value="100"/>
+      <int name="slotMax" value="100"/>
+    </imgdir>
+  </imgdir>
+  <imgdir name="03994063">
+    <imgdir name="info">
+      <canvas name="icon" format="1" scale="0">
+        <vector name="origin" x="0" y="29"/>
+      </canvas>
+      <canvas name="iconRaw" format="1" scale="0">
+        <vector name="origin" x="0" y="28"/>
+      </canvas>
+      <int name="price" value="100"/>
+      <int name="slotMax" value="100"/>
+    </imgdir>
+  </imgdir>
+  <imgdir name="03994064">
+    <imgdir name="info">
+      <canvas name="icon" format="1" scale="0">
+        <vector name="origin" x="0" y="30"/>
+      </canvas>
+      <canvas name="iconRaw" format="1" scale="0">
+        <vector name="origin" x="0" y="28"/>
+      </canvas>
+      <int name="price" value="100"/>
+      <int name="slotMax" value="100"/>
+    </imgdir>
+  </imgdir>
+  <imgdir name="03994065">
+    <imgdir name="info">
+      <canvas name="icon" format="1" scale="0">
+        <vector name="origin" x="0" y="30"/>
+      </canvas>
+      <canvas name="iconRaw" format="1" scale="0">
+        <vector name="origin" x="0" y="28"/>
+      </canvas>
+      <int name="price" value="100"/>
+      <int name="slotMax" value="100"/>
+    </imgdir>
+  </imgdir>
+  <imgdir name="03994066">
+    <imgdir name="info">
+      <canvas name="icon" format="1" scale="0">
+        <vector name="origin" x="0" y="30"/>
+      </canvas>
+      <canvas name="iconRaw" format="1" scale="0">
+        <vector name="origin" x="0" y="28"/>
+      </canvas>
+      <int name="price" value="100"/>
+      <int name="slotMax" value="100"/>
+    </imgdir>
+  </imgdir>
+  <imgdir name="03994067">
+    <imgdir name="info">
+      <canvas name="icon" format="1" scale="0">
+        <vector name="origin" x="0" y="29"/>
+      </canvas>
+      <canvas name="iconRaw" format="1" scale="0">
+        <vector name="origin" x="0" y="28"/>
+      </canvas>
+      <int name="price" value="100"/>
+      <int name="slotMax" value="100"/>
+    </imgdir>
+  </imgdir>
+  <imgdir name="03994068">
+    <imgdir name="info">
+      <canvas name="icon" format="1" scale="0">
+        <vector name="origin" x="0" y="29"/>
+      </canvas>
+      <canvas name="iconRaw" format="1" scale="0">
+        <vector name="origin" x="0" y="28"/>
+      </canvas>
+      <int name="price" value="100"/>
+      <int name="slotMax" value="100"/>
+    </imgdir>
+  </imgdir>
+  <imgdir name="03994069">
+    <imgdir name="info">
+      <canvas name="icon" format="1" scale="0">
+        <vector name="origin" x="0" y="29"/>
+      </canvas>
+      <canvas name="iconRaw" format="1" scale="0">
+        <vector name="origin" x="0" y="28"/>
+      </canvas>
+      <int name="price" value="100"/>
+      <int name="slotMax" value="100"/>
+    </imgdir>
+  </imgdir>
+  <imgdir name="03994070">
+    <imgdir name="info">
+      <canvas name="icon" format="1" scale="0">
+        <vector name="origin" x="0" y="29"/>
+      </canvas>
+      <canvas name="iconRaw" format="1" scale="0">
+        <vector name="origin" x="0" y="28"/>
+      </canvas>
+      <int name="price" value="500"/>
+      <int name="slotMax" value="100"/>
+    </imgdir>
+  </imgdir>
+  <imgdir name="03994071">
+    <imgdir name="info">
+      <canvas name="icon" format="1" scale="0">
+        <vector name="origin" x="0" y="30"/>
+      </canvas>
+      <canvas name="iconRaw" format="1" scale="0">
+        <vector name="origin" x="0" y="28"/>
+      </canvas>
+      <int name="price" value="500"/>
+      <int name="slotMax" value="100"/>
+    </imgdir>
+  </imgdir>
+  <imgdir name="03994072">
+    <imgdir name="info">
+      <canvas name="icon" format="1" scale="0">
+        <vector name="origin" x="0" y="30"/>
+      </canvas>
+      <canvas name="iconRaw" format="1" scale="0">
+        <vector name="origin" x="0" y="28"/>
+      </canvas>
+      <int name="price" value="500"/>
+      <int name="slotMax" value="100"/>
+    </imgdir>
+  </imgdir>
+  <imgdir name="03994073">
+    <imgdir name="info">
+      <canvas name="icon" format="1" scale="0">
+        <vector name="origin" x="0" y="30"/>
+      </canvas>
+      <canvas name="iconRaw" format="1" scale="0">
+        <vector name="origin" x="0" y="28"/>
+      </canvas>
+      <int name="price" value="100"/>
+      <int name="slotMax" value="100"/>
+    </imgdir>
+  </imgdir>
+  <imgdir name="03994074">
+    <imgdir name="info">
+      <canvas name="icon" format="1" scale="0">
+        <vector name="origin" x="0" y="31"/>
+      </canvas>
+      <canvas name="iconRaw" format="1" scale="0">
+        <vector name="origin" x="0" y="29"/>
+      </canvas>
+      <int name="price" value="100"/>
+      <int name="slotMax" value="100"/>
+    </imgdir>
+  </imgdir>
+  <imgdir name="03994075">
+    <imgdir name="info">
+      <canvas name="icon" format="1" scale="0">
+        <vector name="origin" x="0" y="30"/>
+      </canvas>
+      <canvas name="iconRaw" format="1" scale="0">
+        <vector name="origin" x="0" y="29"/>
+      </canvas>
+      <int name="price" value="100"/>
+      <int name="slotMax" value="100"/>
+    </imgdir>
+  </imgdir>
+  <imgdir name="03994076">
+    <imgdir name="info">
+      <canvas name="icon" format="1" scale="0">
+        <vector name="origin" x="0" y="30"/>
+      </canvas>
+      <canvas name="iconRaw" format="1" scale="0">
+        <vector name="origin" x="0" y="28"/>
+      </canvas>
+      <int name="price" value="100"/>
+      <int name="slotMax" value="100"/>
+    </imgdir>
+  </imgdir>
+  <imgdir name="03994077">
+    <imgdir name="info">
+      <canvas name="icon" format="1" scale="0">
+        <vector name="origin" x="0" y="30"/>
+      </canvas>
+      <canvas name="iconRaw" format="1" scale="0">
+        <vector name="origin" x="0" y="28"/>
+      </canvas>
+      <int name="price" value="100"/>
+      <int name="slotMax" value="100"/>
+    </imgdir>
+  </imgdir>
+  <imgdir name="03994078">
+    <imgdir name="info">
+      <canvas name="icon" format="1" scale="0">
+        <vector name="origin" x="0" y="30"/>
+      </canvas>
+      <canvas name="iconRaw" format="1" scale="0">
+        <vector name="origin" x="0" y="28"/>
+      </canvas>
+      <int name="price" value="100"/>
+      <int name="slotMax" value="100"/>
+    </imgdir>
+  </imgdir>
+  <imgdir name="03994079">
+    <imgdir name="info">
+      <canvas name="icon" format="1" scale="0">
+        <vector name="origin" x="0" y="30"/>
+      </canvas>
+      <canvas name="iconRaw" format="1" scale="0">
+        <vector name="origin" x="0" y="28"/>
+      </canvas>
+      <int name="price" value="100"/>
+      <int name="slotMax" value="100"/>
+    </imgdir>
+  </imgdir>
+  <imgdir name="03994080">
+    <imgdir name="info">
+      <canvas name="icon" format="1" scale="0">
+        <vector name="origin" x="0" y="30"/>
+      </canvas>
+      <canvas name="iconRaw" format="1" scale="0">
+        <vector name="origin" x="0" y="28"/>
+      </canvas>
+      <int name="price" value="100"/>
+      <int name="slotMax" value="100"/>
+    </imgdir>
+  </imgdir>
+    <imgdir name="03994081">
+      <imgdir name="info">
+        <canvas name="icon" format="1" scale="0">
+          <vector name="origin" x="0" y="32"/>
+        </canvas>
+        <canvas name="iconRaw" format="1" scale="0">
+          <vector name="origin" x="-1" y="32"/>
+        </canvas>
+        <int name="price" value="1"/>
+        <int name="slotMax" value="100"/>
+      </imgdir>
+    </imgdir>
+  <imgdir name="03994082">
+    <imgdir name="info">
+      <canvas name="icon" format="1" scale="0">
+        <vector name="origin" x="0" y="30"/>
+      </canvas>
+      <canvas name="iconRaw" format="1" scale="0">
+        <vector name="origin" x="0" y="26"/>
+      </canvas>
+      <int name="price" value="100"/>
+      <int name="slotMax" value="100"/>
+    </imgdir>
+  </imgdir>
+  <imgdir name="03994083">
+    <imgdir name="info">
+      <canvas name="icon" format="1" scale="0">
+        <vector name="origin" x="0" y="29"/>
+      </canvas>
+      <canvas name="iconRaw" format="1" scale="0">
+        <vector name="origin" x="0" y="27"/>
+      </canvas>
+      <int name="price" value="100"/>
+      <int name="slotMax" value="100"/>
+    </imgdir>
+  </imgdir>
+  <imgdir name="03994084">
+    <imgdir name="info">
+      <canvas name="icon" format="1" scale="0">
+        <vector name="origin" x="0" y="30"/>
+      </canvas>
+      <canvas name="iconRaw" format="1" scale="0">
+        <vector name="origin" x="0" y="27"/>
+      </canvas>
+      <int name="price" value="100"/>
+      <int name="slotMax" value="100"/>
+    </imgdir>
+  </imgdir>
     <imgdir name="03995000">
         <imgdir name="info">
             <canvas name="icon" width="4" height="4">

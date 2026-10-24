@@ -10948,5 +10948,41 @@
             <string name="desc" value="充斥着神秘魔力的魔女硬币"/>
             <string name="name" value="魔女币"/>
         </imgdir>
+        <imgdir name="4000393">
+            <string name="name" value="黑熊指甲"/>
+            <string name="desc" value="黑熊前掌上的指甲，因为从来不修剪，所以长而尖利"/>
+        </imgdir>
+        <imgdir name="4000394">
+            <string name="name" value="白虎尾巴"/>
+            <string name="desc" value="漂亮的白老虎尾巴，从前只有枭雄人物才配拥有"/>
+        </imgdir>
+        <imgdir name="4000395">
+            <string name="name" value="巨鹰羽毛"/>
+            <string name="desc" value="巨鹰翅尖上的羽毛，据说能掌握风的力量"/>
+        </imgdir>
+        <imgdir name="4000396">
+            <string name="name" value="飞贼护手"/>
+            <string name="desc" value="飞贼们常用的护手，攀爬中可以保护手腕不受伤害"/>
+        </imgdir>
+        <imgdir name="4000397">
+            <string name="name" value="飞贼腿带"/>
+            <string name="desc" value="飞贼们常用的腿带，用来防止裤腿飘荡引起的风声"/>
+        </imgdir>
+        <imgdir name="4000402">
+            <string name="name" value="银人心"/>
+            <string name="desc" value="支持银人活动的核心，因为是纯银的，所以很少被用来研究机关"/>
+        </imgdir>
+        <imgdir name="4000403">
+            <string name="name" value="玉佛珠"/>
+            <string name="desc" value="大德高僧开光的佛珠，共有108颗。由于保管不善，被盘踞在寺庙附近的妖怪们抢走了"/>
+        </imgdir>
+        <imgdir name="4000406">
+            <string name="name" value="金人心"/>
+            <string name="desc" value="支持金人活动的核心，因为是纯金的，所以很少被用来研究机关"/>
+        </imgdir>
+        <imgdir name="4000407">
+            <string name="name" value="铜人心"/>
+            <string name="desc" value="支持铜人活动的核心，也是用来研究机关的道具"/>
+        </imgdir>
     </imgdir>
 </imgdir>

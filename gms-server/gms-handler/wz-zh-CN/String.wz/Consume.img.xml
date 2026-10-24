@@ -9951,4 +9951,8 @@
         <string name="desc" value="1小时内获得经验值增加1.5倍。"/>
         <string name="name" value="浪子回头的祝福"/>
     </imgdir>
+    <imgdir name="2022141">
+        <string name="name" value="镇魂包子"/>
+        <string name="desc" value="以四圣兽之灵镇守魂魄的超级中华美味，吃一个HP、MP全恢复并且异常状态全消除"/>
+    </imgdir>
 </imgdir>

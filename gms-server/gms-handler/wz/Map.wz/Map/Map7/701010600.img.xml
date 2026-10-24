@@ -6501,5 +6501,13 @@
             <int name="tm" value="701010500"/>
             <string name="tn" value="west00"/>
         </imgdir>
+        <imgdir name="2">
+            <string name="pn" value="xuzhou00"/>
+            <int name="pt" value="2"/>
+            <int name="x" value="5759"/>
+            <int name="y" value="-71"/>
+            <int name="tm" value="702000000"/>
+            <string name="tn" value="h-top03"/>
+        </imgdir>
     </imgdir>
 </imgdir>

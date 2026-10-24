@@ -2526,4 +2526,124 @@
     <imgdir name="9420014">
         <string name="name" value="六手邪神"/>
     </imgdir>
+    <imgdir name="9600012">
+        <string name="name" value="黑熊"/>
+    </imgdir>
+    <imgdir name="9600013">
+        <string name="name" value="白老虎"/>
+    </imgdir>
+    <imgdir name="9600014">
+        <string name="name" value="巨鹰"/>
+    </imgdir>
+    <imgdir name="9600015">
+        <string name="name" value="男飞贼"/>
+    </imgdir>
+    <imgdir name="9600016">
+        <string name="name" value="女飞贼"/>
+    </imgdir>
+    <imgdir name="9600017">
+        <string name="name" value="香炉怪"/>
+    </imgdir>
+    <imgdir name="9600018">
+        <string name="name" value="木鱼妖"/>
+    </imgdir>
+    <imgdir name="9600019">
+        <string name="name" value="小金人"/>
+    </imgdir>
+    <imgdir name="9600020">
+        <string name="name" value="小铜人"/>
+    </imgdir>
+    <imgdir name="9600021">
+        <string name="name" value="巨化金人"/>
+    </imgdir>
+    <imgdir name="9600022">
+        <string name="name" value="巨化银人"/>
+    </imgdir>
+    <imgdir name="9600023">
+        <string name="name" value="铜人"/>
+    </imgdir>
+    <imgdir name="9600024">
+        <string name="name" value="银人"/>
+    </imgdir>
+    <imgdir name="9600025">
+        <string name="name" value="武林妖僧"/>
+    </imgdir>
+    <imgdir name="9600037">
+        <string name="name" value="英文字母A"/>
+    </imgdir>
+    <imgdir name="9600038">
+        <string name="name" value="英文字母B"/>
+    </imgdir>
+    <imgdir name="9600039">
+        <string name="name" value="英文字母C"/>
+    </imgdir>
+    <imgdir name="9600040">
+        <string name="name" value="英文字母D"/>
+    </imgdir>
+    <imgdir name="9600041">
+        <string name="name" value="英文字母E"/>
+    </imgdir>
+    <imgdir name="9600042">
+        <string name="name" value="英文字母F"/>
+    </imgdir>
+    <imgdir name="9600043">
+        <string name="name" value="英文字母G"/>
+    </imgdir>
+    <imgdir name="9600044">
+        <string name="name" value="英文字母H"/>
+    </imgdir>
+    <imgdir name="9600045">
+        <string name="name" value="英文字母I"/>
+    </imgdir>
+    <imgdir name="9600046">
+        <string name="name" value="英文字母J"/>
+    </imgdir>
+    <imgdir name="9600047">
+        <string name="name" value="英文字母K"/>
+    </imgdir>
+    <imgdir name="9600048">
+        <string name="name" value="英文字母L"/>
+    </imgdir>
+    <imgdir name="9600049">
+        <string name="name" value="英文字母M"/>
+    </imgdir>
+    <imgdir name="9600050">
+        <string name="name" value="英文字母N"/>
+    </imgdir>
+    <imgdir name="9600051">
+        <string name="name" value="英文字母O"/>
+    </imgdir>
+    <imgdir name="9600052">
+        <string name="name" value="英文字母P"/>
+    </imgdir>
+    <imgdir name="9600053">
+        <string name="name" value="英文字母Q"/>
+    </imgdir>
+    <imgdir name="9600054">
+        <string name="name" value="英文字母R"/>
+    </imgdir>
+    <imgdir name="9600055">
+        <string name="name" value="英文字母S"/>
+    </imgdir>
+    <imgdir name="9600056">
+        <string name="name" value="英文字母T"/>
+    </imgdir>
+    <imgdir name="9600057">
+        <string name="name" value="英文字母U"/>
+    </imgdir>
+    <imgdir name="9600058">
+        <string name="name" value="英文字母V"/>
+    </imgdir>
+    <imgdir name="9600059">
+        <string name="name" value="英文字母W"/>
+    </imgdir>
+    <imgdir name="9600060">
+        <string name="name" value="英文字母X"/>
+    </imgdir>
+    <imgdir name="9600061">
+        <string name="name" value="英文字母Y"/>
+    </imgdir>
+    <imgdir name="9600062">
+        <string name="name" value="英文字母Z"/>
+    </imgdir>
 </imgdir>

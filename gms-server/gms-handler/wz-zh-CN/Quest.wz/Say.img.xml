@@ -22001,4 +22001,225 @@
       </imgdir>
     </imgdir>
   </imgdir>
+  <imgdir name="8530">
+    <imgdir name="0">
+      <string name="0" value="施主想要进少林寺参观啊，最近山路上多了许多怪物和剪径的强人，如果你能清除他们并带来我要的东西，就让你进#b大雄宝殿#k。"/>
+      <imgdir name="yes">
+        <string name="0" value="你答应了，太好了，施主真乃善人也。只要带来#b#t4000393#50个、#t4000394#40个、#t4000395#30个、#t4000396#20个、#t4000397#10个#k。我就做主许你进入#m702100000#参观。"/>
+      </imgdir>
+      <imgdir name="no">
+        <string name="0" value="哦，原来施主只是来旅游的，那么少林重地，闲人免进。"/>
+      </imgdir>
+    </imgdir>
+    <imgdir name="1">
+      <string name="0" value="啊，太好了。消灭了不少怪物和强盗吧，那么我就让你进少林参观吧。"/>
+      <imgdir name="stop">
+        <imgdir name="item">
+          <string name="0" value="东西还没收齐呢，请继续努力吧。"/>
+        </imgdir>
+      </imgdir>
+    </imgdir>
+  </imgdir>
+  <imgdir name="8531">
+    <imgdir name="0">
+      <string name="0" value="施主已经是四转的强大冒险者啊，如此强劲的实力，是否能帮我少林一个忙呢？"/>
+      <imgdir name="yes">
+        <string name="0" value="根据我的观察，最近一段时间少林怪物肆虐的源头应该就是这藏经阁了。只是还不知道阁中到底发生了什么事情。你去消灭掉#b100只 #o9600020##K，再拿#b50个 #t4000407##k来给我，我好仔细研究一下。"/>
+      </imgdir>
+      <imgdir name="no">
+        <string name="0" value="如此强大的你都不愿意帮我，难道这真是少林的劫难……"/>
+      </imgdir>
+    </imgdir>
+    <imgdir name="1">
+      <string name="0" value="恩，数量正好，我收下了，等会再来找我，我会告诉你结果的。"/>
+      <imgdir name="stop">
+        <imgdir name="mob">
+          <string name="0" value="100只 #o9600020#，50个 #t4000407#对你来说并不是很困难的事情吧"/>
+        </imgdir>
+        <imgdir name="item">
+          <string name="0" value="100只 #o9600020#，50个 #t4000407#对你来说并不是很困难的事情吧"/>
+        </imgdir>
+      </imgdir>
+    </imgdir>
+  </imgdir>
+  <imgdir name="8532">
+    <imgdir name="0">
+      <string name="0" value="啊，施主你来了。我已经分析了上次带来的#b#t4000407##k，很可惜，这种怪物还太差，无法得知详细情况。能再帮我一个忙吗？"/>
+      <imgdir name="yes">
+        <string name="0" value="这次需要的是#b50个 #t4000402##k，顺便再消灭#r80个 #o9600024##k吧。对了，三楼的#b#p9310046##k对这个比较有研究，你把#b#t4000402##k直接带给他就好了。"/>
+      </imgdir>
+      <imgdir name="no">
+        <string name="0" value="如此强大的你都不愿意帮我，难道这真是少林的劫难……"/>
+      </imgdir>
+    </imgdir>
+    <imgdir name="1">
+      <string name="0" value="哦，是#b#p9310048##k让你送来的啊。好的，我来研究一下看看。过会再来找我吧。"/>
+      <imgdir name="stop">
+        <imgdir name="mob">
+          <string name="0" value="东西都收集全了吗？#b80个#o9600024#, 50个#t4000402##k。"/>
+        </imgdir>
+        <imgdir name="item">
+          <string name="0" value="东西都收集全了吗？#b80个#o9600024#, 50个#t4000402##k。"/>
+        </imgdir>
+      </imgdir>
+    </imgdir>
+  </imgdir>
+  <imgdir name="8533">
+    <imgdir name="0">
+      <string name="0" value="施主来的正好，我有了重要发现，不过现在还不能确定。一事不烦二主，还请施主继续帮忙才好啊。"/>
+      <imgdir name="yes">
+        <string name="0" value="多谢施主，贫僧师弟#b#p9310047##k对各种机关结构最有研究。你去收集#r50个 #t4000406##k带给他，他应该会找到确切的原因。顺便再消灭#r50个 #o9600019##k吧。"/>
+      </imgdir>
+      <imgdir name="no">
+        <string name="0" value="如此强大的你都不愿意帮我，难道这真是少林的劫难……"/>
+      </imgdir>
+    </imgdir>
+    <imgdir name="1">
+      <string name="0" value="原来是师兄叫你送来的，我尽快研究一下，这个东西还真特别啊。请稍等。"/>
+      <imgdir name="stop">
+        <imgdir name="mob">
+          <string name="0" value="东西收集全了吗? #b50个小金人, 50个金人心#k。"/>
+        </imgdir>
+        <imgdir name="item">
+          <string name="0" value="东西收集全了吗? #b50个小金人, 50个金人心#k，尽快去找#b澄心#k吧。"/>
+        </imgdir>
+      </imgdir>
+    </imgdir>
+  </imgdir>
+  <imgdir name="8534">
+    <imgdir name="0">
+      <string name="0" value="我想我找到原因了，你想要知道真相的话，请再帮个忙可否？"/>
+      <imgdir name="yes">
+        <string name="0" value="其实关键的关键还在这些结构复杂的心上，带上#b30个 #t4000406#、30个 #t4000402#、30个 #t4000407##k 给#p9310048#，他会告诉你真相的。"/>
+      </imgdir>
+      <imgdir name="no">
+        <string name="0" value="如此强大的你都不愿意帮我，难道这真是少林的劫难……"/>
+      </imgdir>
+    </imgdir>
+    <imgdir name="1">
+      <string name="0" value="哦，关键在心中啊，我明白了。施主找人一起到阁顶供奉着的达摩画像那里看看，应该就能找到真相了。"/>
+      <imgdir name="stop">
+        <imgdir name="item">
+          <string name="0" value="想知道真相的话，请尽快收集各种机关人核心各30个来吧。"/>
+        </imgdir>
+      </imgdir>
+    </imgdir>
+  </imgdir>
+  <imgdir name="8536">
+    <imgdir name="0">
+      <string name="0" value="你好啊，远道而来的冒险者。我是这里的镇长，他们都叫我#p9310049#。能不能请你帮个小忙？"/>
+      <imgdir name="yes">
+        <string name="0" value="我与少林的方丈是多年的老朋友，有些日子不见面了，想要去看望他。但是不知道为什么最近镇外出现许多怪物。我一个老人家，实在上不太安全。请你帮忙消灭#b100只 #o9600012##k 和 #b50只 #o9600013##k，这样我应该就能放心出门了。"/>
+      </imgdir>
+      <imgdir name="no">
+        <string name="0" value="啊，原来你也有很重要的事情啊。那么希望你有空的时候再来帮我吧"/>
+      </imgdir>
+    </imgdir>
+    <imgdir name="1">
+      <string name="0" value="啊，你可真是厉害啊。那么强大的怪物都被你消灭了，这下我就可以放心出门了。真是谢谢你啊。"/>
+      <imgdir name="stop">
+        <imgdir name="item">
+          <string name="0" value="哎呀，还是有很多的怪物啊，请再多多帮忙。只要消灭100只 #o9600012#和 50只 #o9600013#就可以了。"/>
+        </imgdir>
+      </imgdir>
+    </imgdir>
+  </imgdir>
+  <imgdir name="8537">
+    <imgdir name="0">
+      <string name="0" value="你是冒险者吗？看起来好象满强大的样子，能不能帮我个忙。"/>
+      <imgdir name="yes">
+        <string name="0" value="我的丈夫以前在少林寺许过愿，现在愿望实现了。但是他前几天远游去了，走前交代我一定要替他来少林寺还愿。没想到路上被怪物袭击了，受了点小伤。能不能请你帮忙去买点药来呢，顺便再带点吃的来？很容易的，在山下的嵩阳镇杂货店就有卖。"/>
+      </imgdir>
+      <imgdir name="no">
+        <string name="0" value="哎呀，出门在外应该互相帮助不是吗。"/>
+      </imgdir>
+    </imgdir>
+    <imgdir name="1">
+      <string name="0" value="太谢谢你了，这下就不会被我丈夫埋怨了。"/>
+      <imgdir name="stop">
+        <imgdir name="item">
+          <string name="0" value="圣水、鸡蛋和活力神药还没有拿到吗？嵩阳镇上就有卖的呀。"/>
+        </imgdir>
+      </imgdir>
+    </imgdir>
+  </imgdir>
+  <imgdir name="8538">
+    <imgdir name="0">
+      <string name="0" value="这位施主，小僧有事相求，万望施主不吝相助。"/>
+      <imgdir name="yes">
+        <string name="0" value="小僧有个师兄早年外出苦修，时日已久却不见音信，小僧好不挂念，还请施主代为寻找。小僧的师兄法号#b#p9310040##k。"/>
+      </imgdir>
+      <imgdir name="no">
+        <string name="0" value="阿弥陀佛，施主既有要事在身，小僧不敢叨扰。施主若得闲暇时，再来帮小僧便可……"/>
+      </imgdir>
+    </imgdir>
+    <imgdir name="1">
+      <string name="0" value="太谢谢你了，出来这么久让师弟担心了啊~ 等会再来找我。"/>
+      <imgdir name="yes">
+        <string name="0" value="阿弥陀佛，贫僧有礼了。不知施主找贫僧，所为何事。"/>
+      </imgdir>
+      <imgdir name="stop">
+        <imgdir name="npc">
+          <string name="0" value="阿弥陀佛，贫僧有礼了。不知施主找贫僧，所为何事。"/>
+        </imgdir>
+      </imgdir>
+    </imgdir>
+  </imgdir>
+  <imgdir name="8539">
+    <imgdir name="0">
+      <string name="0" value="原来是#b#p9310052##k师弟所托，贫僧入世修行未满，还不能回寺。这里有书信一封，请施主带给我的小师弟，不知可否？"/>
+      <imgdir name="yes">
+        <string name="0" value="如此多谢施主了。"/>
+      </imgdir>
+      <imgdir name="no">
+        <string name="0" value="些许小事，就不麻烦施主了。"/>
+      </imgdir>
+    </imgdir>
+    <imgdir name="1">
+      <string name="0" value="啊，师兄的信。原来师兄正在精修禅宗，多谢施主带来师兄的音信。小僧无以为报，些许物件，还请施主笑纳。"/>
+      <imgdir name="stop">
+        <imgdir name="npc">
+          <string name="0" value="请施主早日将书信送与我那小师弟，免得他挂念，于修行不利。"/>
+        </imgdir>
+      </imgdir>
+    </imgdir>
+  </imgdir>
+  <imgdir name="8540">
+    <imgdir name="0">
+      <string name="0" value="阿弥陀佛，施主帮助那#b#p9310049##k之事老衲已知。当下却有另一件要事，不知施主能否担当这个？"/>
+      <imgdir name="yes">
+        <string name="0" value="如此便拜托施主了。保存在我少林的镇妖法宝：108颗灭魔佛珠，最近无故失踪。虽经寺中僧众合力查询，终究未能全部找回。佛门至宝流落在外，若被有心人甚或怪物得去，后果不堪设想。纤细情况请施主询问一下#b#p9310051#。"/>
+      </imgdir>
+      <imgdir name="no">
+        <string name="0" value="事关重大，还请施主三思……"/>
+      </imgdir>
+    </imgdir>
+    <imgdir name="1">
+      <string name="0" value="此事关系重大，待贫僧细细讲来。"/>
+      <imgdir name="stop">
+        <imgdir name="npc">
+          <string name="0" value="此事关系重大，请施主小心行事。"/>
+        </imgdir>
+      </imgdir>
+    </imgdir>
+  </imgdir>
+  <imgdir name="8541">
+    <imgdir name="1">
+      <string name="0" value="果然是灭魔佛珠啊，贫僧稍待便送与方丈。多谢施主，一些小小的礼物，请施主收下。"/>
+      <imgdir name="stop">
+        <imgdir name="item">
+          <string name="0" value="施主还未找到那佛门至宝的下落吗？"/>
+        </imgdir>
+      </imgdir>
+    </imgdir>
+    <imgdir name="0">
+      <string name="0" value="目下只找回了8颗佛珠，都是在寺内外的妖孽身上发现。剩余的100颗，应该也是被这些妖孽藏匿了。施主若是寻到了这100颗佛门至宝，还请交给山门知客，少林定有重谢。"/>
+      <imgdir name="yes">
+        <string name="0" value="如此多谢施主，请速速寻回那100颗玉佛珠。"/>
+      </imgdir>
+      <imgdir name="no">
+        <string name="0" value="施主既有要事在身，此事贫僧另想他法吧。"/>
+      </imgdir>
+    </imgdir>
+  </imgdir>
 </imgdir>

@@ -835,6 +835,110 @@
         <string name="name" value="新年字母Y"/>
         <string name="desc" value="新年字母Y，搜集其他的新年字\n母，拿给冒险岛运营员的话……"/>
     </imgdir>
+    <imgdir name="3994059">
+        <string name="name" value="字母A"/>
+        <string name="desc" value="英语村专用英文字母。"/>
+    </imgdir>
+    <imgdir name="3994060">
+        <string name="name" value="字母B"/>
+        <string name="desc" value="英语村专用英文字母。"/>
+    </imgdir>
+    <imgdir name="3994061">
+        <string name="name" value="字母C"/>
+        <string name="desc" value="英语村专用英文字母。"/>
+    </imgdir>
+    <imgdir name="3994062">
+        <string name="name" value="字母D"/>
+        <string name="desc" value="英语村专用英文字母。"/>
+    </imgdir>
+    <imgdir name="3994063">
+        <string name="name" value="字母E"/>
+        <string name="desc" value="英语村专用英文字母。"/>
+    </imgdir>
+    <imgdir name="3994064">
+        <string name="name" value="字母F"/>
+        <string name="desc" value="英语村专用英文字母。"/>
+    </imgdir>
+    <imgdir name="3994065">
+        <string name="name" value="字母G"/>
+        <string name="desc" value="英语村专用英文字母。"/>
+    </imgdir>
+    <imgdir name="3994066">
+        <string name="name" value="字母H"/>
+        <string name="desc" value="英语村专用英文字母。"/>
+    </imgdir>
+    <imgdir name="3994067">
+        <string name="name" value="字母I"/>
+        <string name="desc" value="英语村专用英文字母。"/>
+    </imgdir>
+    <imgdir name="3994068">
+        <string name="name" value="字母J"/>
+        <string name="desc" value="英语村专用英文字母。"/>
+    </imgdir>
+    <imgdir name="3994069">
+        <string name="name" value="字母K"/>
+        <string name="desc" value="英语村专用英文字母。"/>
+    </imgdir>
+    <imgdir name="3994070">
+        <string name="name" value="字母L"/>
+        <string name="desc" value="英语村专用英文字母。"/>
+    </imgdir>
+    <imgdir name="3994071">
+        <string name="name" value="字母M"/>
+        <string name="desc" value="英语村专用英文字母。"/>
+    </imgdir>
+    <imgdir name="3994072">
+        <string name="name" value="字母N"/>
+        <string name="desc" value="英语村专用英文字母。"/>
+    </imgdir>
+    <imgdir name="3994073">
+        <string name="name" value="字母O"/>
+        <string name="desc" value="英语村专用英文字母。"/>
+    </imgdir>
+    <imgdir name="3994074">
+        <string name="name" value="字母P"/>
+        <string name="desc" value="英语村专用英文字母。"/>
+    </imgdir>
+    <imgdir name="3994075">
+        <string name="name" value="字母Q"/>
+        <string name="desc" value="英语村专用英文字母。"/>
+    </imgdir>
+    <imgdir name="3994076">
+        <string name="name" value="字母R"/>
+        <string name="desc" value="英语村专用英文字母。"/>
+    </imgdir>
+    <imgdir name="3994077">
+        <string name="name" value="字母S"/>
+        <string name="desc" value="英语村专用英文字母。"/>
+    </imgdir>
+    <imgdir name="3994078">
+        <string name="name" value="字母T"/>
+        <string name="desc" value="英语村专用英文字母。"/>
+    </imgdir>
+    <imgdir name="3994079">
+        <string name="name" value="字母U"/>
+        <string name="desc" value="英语村专用英文字母。"/>
+    </imgdir>
+    <imgdir name="3994080">
+        <string name="name" value="字母V"/>
+        <string name="desc" value="英语村专用英文字母。"/>
+    </imgdir>
+    <imgdir name="3994081">
+        <string name="name" value="字母W"/>
+        <string name="desc" value="英语村专用英文字母。"/>
+    </imgdir>
+    <imgdir name="3994082">
+        <string name="name" value="字母X"/>
+        <string name="desc" value="英语村专用英文字母。"/>
+    </imgdir>
+    <imgdir name="3994083">
+        <string name="name" value="字母Y"/>
+        <string name="desc" value="英语村专用英文字母。"/>
+    </imgdir>
+    <imgdir name="3994084">
+        <string name="name" value="字母Z"/>
+        <string name="desc" value="英语村专用英文字母。"/>
+    </imgdir>
     <imgdir name="3994085">
         <string name="name" value="运营员的蜡烛"/>
         <string name="desc" value="运营员交给玩家的小蜡烛。游戏\n结束时，蜡烛熄灭并消失。"/>

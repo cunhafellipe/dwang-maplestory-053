@@ -7120,4 +7120,94 @@
     <string name="2" value="送#b#t04140100##k礼物给#b#p1002006##k。"/>
     <int name="area" value="50"/>
   </imgdir>
+  <imgdir name="8530">
+    <string name="name" value="拜山门"/>
+    <string name="0" value="听说想要进#b#m702100000##k要找少林#b#p9310041#。"/>
+    <string name="1" value="#b#p9310041##k说最近山路上的怪物和强盗变多了，伤害了很多香客和旅游者。希望我能帮忙清理一下，带给他：\n#r#t4000393# 50#k个,#r#t4000394# 40#k个,#r#t4000395# 30#k个,#r#t4000396# 20#k个,#r#t4000397# 10#k个，就可以让我进#b#m702100000##k参观。 \n\n#t4000393#  #b#c4000393##k / 50\n#t4000394#  #b#c4000394##k / 40\n#t4000395#  #b#c4000395##k / 30\n#t4000396#  #b#c4000396##k / 20\n#t4000397#  #b#c4000397##k / 10"/>
+    <string name="2" value="清理了大量盘踞在山路上的怪物，收集好了道具，终于可以进少林参观了。"/>
+    <int name="area" value="45"/>
+  </imgdir>
+  <imgdir name="8531">
+    <string name="name" value="藏经阁的秘密1"/>
+    <string name="parent" value="藏经阁的秘密"/>
+    <int name="order" value="1"/>
+    <string name="0" value="藏经阁的#b#p9310048##k好象是个大高手的样子。"/>
+    <string name="1" value="#b#p9310048##k觉得少林出现大量怪物最大的秘密就在藏经阁。希望我消灭#b100只 #o9600020##k，并收集#r50个 #t4000407##k 回来给他分析。 \n\n #o9600020# #r#a85311##k \n #t4000407# #b#c4000407##k/50"/>
+    <string name="2" value="消灭了那么多#b#o9600020##k，还带回了#b#t4000407##k，#p9310048#很高兴，让我过段时间再来找他"/>
+    <int name="area" value="45"/>
+  </imgdir>
+  <imgdir name="8532">
+    <string name="name" value="藏经阁的秘密2"/>
+    <string name="parent" value="藏经阁的秘密"/>
+    <int name="order" value="2"/>
+    <string name="1" value="#b#p9310048##k分析了#t4000407##k的构造以及其中蕴涵的气息，认为需要更强大的怪物身上的东西。希望我再去消灭 #r80个 #o9600024##k，并收集 #r50个#t4000402##k带给藏经阁的#b#p9310046#。 \n\n#t4000402# #b#c4000402##k/50\n#o9600024# #r#a85321#"/>
+    <string name="2" value="消灭了#o9600024#，并收集了#t4000402#带给了#b#p9310046#大师#k，希望这次能找到怪物出现的原因。"/>
+    <int name="area" value="45"/>
+  </imgdir>
+  <imgdir name="8533">
+    <string name="name" value="藏经阁的秘密3"/>
+    <string name="parent" value="藏经阁的秘密"/>
+    <int name="order" value="3"/>
+    <string name="1" value="#b#p9310046#大师#k研究了我带来的东西以后觉得有些眉目了，但是还需要藏经阁里另一位#b#p9310047#大师#k确认一下。还要带#r50个 #t4000406##k给#b#p9310047#大师#k进行研究，顺便再消灭#r50个 #o9600019##k吧。\n\n#t4000406# #b#c4000406##k/50\n#o9600019# #r#a85331#"/>
+    <string name="2" value="收集足够的#t4000406#带给了#p9310047#大师，大师要闭关一段时间，让我一会再去找他。"/>
+    <int name="area" value="45"/>
+  </imgdir>
+  <imgdir name="8534">
+    <string name="name" value="藏经阁的秘密4"/>
+    <string name="parent" value="藏经阁的秘密"/>
+    <int name="order" value="4"/>
+    <string name="1" value="#b#p9310047#大师#k出关后告诉我关键在于控制机关人的机关。于是要我收集 #r30个 #t4000406#、30个 #t4000402#、30个 #t4000407##k，并交给#b#p9310048##k。\n\n#t4000406# #b#c4000406##k/30\n#t4000402# #b#c4000402##k/30\n#t4000407# #b#c4000407##k/30"/>
+    <string name="2" value="#b#p9310048##k对3种机关人的核心研究后表示找到了怪物的秘密，希望我找几个人一起去阁顶调查一下#b达摩画像。"/>
+    <int name="area" value="45"/>
+  </imgdir>
+  <imgdir name="8536">
+    <string name="name" value="镇长的委托"/>
+    <string name="0" value="嵩阳镇的#b#p9310049##k好象在找人帮忙。"/>
+    <string name="1" value="原来#b#p9310049##k与少林#b#p9310053##k是老朋友,很久没见面了，想要去少林看望一下。但是最近镇外出现大量怪物，老人出门比较危险。希望我帮忙消灭#r100只 #o9600012##k 和 #r50只 #o9600013##k \n\n#o9600012# #r#a85361##k\n#o9600013# #r#a85362##k "/>
+    <string name="2" value="消灭了不少#b#o9600012##k 和 #b#o9600013##k，现在镇子周围要安全一些了吧，希望两位老人见面愉快。"/>
+    <int name="area" value="45"/>
+  </imgdir>
+  <imgdir name="8537">
+    <string name="name" value="还愿"/>
+    <string name="0" value="#b#m702010000##k下经常会有需要帮助的人。"/>
+    <string name="1" value="在#b#m702010000##k下遇到了#b#p9310042##k，她是替丈夫来还愿的。因为怪物袭击，受伤了。需要我帮她买点药品和食品来。\n\n#t2010002# #b#c2010002##k/50\n#t2000011# #b#c2000011##k/20\n#t2050003# #b#c2050003##k/10"/>
+    <string name="2" value="到#b嵩阳镇的杂货店#k顺利买到了药物和食品，帮助#b#p9310042##k完成了对丈夫的承诺。"/>
+    <int name="area" value="45"/>
+  </imgdir>
+  <imgdir name="8538">
+    <string name="name" value="寻找师兄1"/>
+    <string name="parent" value="寻找师兄"/>
+    <int name="order" value="1"/>
+    <string name="0" value="少林寺的小沙弥#b#p9310052##k好象遇到了什么麻烦。"/>
+    <string name="1" value="原来#b#p9310052##k的师兄外出苦修。但是过了约定时间却还没有回来，有点担心，希望我去找找。他师兄法号：#b#p9310040##k。好象在哪里见到过啊"/>
+    <string name="2" value="在#b#m702030000##k发现了#b#p9310040#和尚#k，但是他似乎还在修行中，听说小师弟担心，让我给#b#p9310052##k带个信。"/>
+    <int name="area" value="45"/>
+  </imgdir>
+  <imgdir name="8539">
+    <string name="name" value="寻找师兄2"/>
+    <string name="parent" value="寻找师兄"/>
+    <int name="order" value="2"/>
+    <string name="0" value="#b#p9310040##k和尚#k有事情拜托。"/>
+    <string name="1" value="为了不让小师弟担心，希望我带个信给#b#p9310052#。"/>
+    <string name="2" value="带了#p9310040#的信给#b#p9310052##k，这下他该放心了吧。"/>
+    <int name="area" value="45"/>
+  </imgdir>
+  <imgdir name="8540">
+    <string name="name" value="佛珠1"/>
+    <string name="parent" value="佛珠"/>
+    <int name="order" value="1"/>
+    <string name="0" value="少林方丈大师似乎有烦恼的事情啊"/>
+    <string name="1" value="方丈大师告诉我保存在少林的108颗灭魔佛珠是镇压妖怪的法宝。但是最近发现被窃了。经过努力寻回了一些，但还有几个怎么也找不到了。详细情况要问问负责此事的#b#p9310051#。"/>
+    <string name="2" value="#b#p9310051##k说明了情况，果然很严重啊。"/>
+    <int name="area" value="45"/>
+  </imgdir>
+  <imgdir name="8541">
+    <string name="name" value="佛珠2"/>
+    <string name="parent" value="佛珠"/>
+    <int name="order" value="2"/>
+    <string name="0" value="#b#p9310051##k需要帮助。"/>
+    <string name="1" value="#b#p9310051##k告诉我，最近妖怪突然增加，已经找回的那8颗佛珠就是在那些妖怪身上发现的。所以剩下的100个应该也是某些妖怪藏起来了。希望我找到100颗玉佛珠并交给山门的#b#p9310041#。\n\n#t4000403# #b#c4000403##k/100"/>
+    <string name="2" value="终于在那些怪物身上找到的失落的佛珠，#b#p9310041##k还真是亲切啊。"/>
+    <int name="area" value="45"/>
+  </imgdir>
 </imgdir>
